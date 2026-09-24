@@ -79,6 +79,7 @@ Link de convite aberto sem conta leva ao cadastro e, ao terminar, direto à conf
 | AL-28 | Comparar fotos | Duas datas lado a lado |
 | AL-29 | Conquistas | Medalhas com poses do mascote, conquistadas e bloqueadas |
 | AL-30 | Resumo semanal/mensal | Treinos, volume, recordes; compartilhar como imagem |
+| AL-31 | Peso | Gráfico do peso e "Registrar peso" rápido, sem abrir avaliação |
 
 ### Professores
 

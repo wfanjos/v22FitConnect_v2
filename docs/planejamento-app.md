@@ -42,6 +42,8 @@ Decisões tomadas até agora no planejamento.
 - Cadastro: nascimento (valida 16+), sexo, peso e altura obrigatórios; anamnese opcional, com aviso ao professor quando vazia.
 - Avaliação física registrada pelo aluno e pelo professor; cada registro guarda o autor.
 - Compartilhamento de anamnese/avaliação autorizado pelo aluno por professor (consentimento LGPD), revogável.
+- Peso: registro rápido a qualquer momento (o do cadastro é o primeiro), com gráfico no Progresso; avaliação com peso também registra.
+- @usuário: não pedido na v1; campo reservado para a rede social.
 - Fotos de evolução no Supabase Storage, privadas e comprimidas (~150 KB); monitorar a cota de 1 GB.
 
 ## Base de exercícios
@@ -52,6 +54,7 @@ Decisões tomadas até agora no planejamento.
 - Descrição e execução geradas por IA como rascunho, em fila de revisão; só aparecem no guia depois de revisadas (sem revisão, campo vazio, sem rótulo de pendência).
 - Guia do exercício: nome, variações do nome, músculo principal, secundários, descrição, execução e animação alternando imagem inicial/final (sem fotos estáticas separadas, sem vídeo).
 - Vídeo próprio dos exercícios: v2.
+- Imagens offline: as dos exercícios das séries do aluno baixam automaticamente; as demais sob demanda, guardadas em cache.
 - Autocomplete offline: ignora acento/maiúscula, tolerante a erro de digitação, busca nas variações do nome, ordena pelos exercícios mais usados pelo usuário.
 - Professor e aluno podem criar exercícios fora da base:
   - do aluno: privado por padrão; pode liberar para um professor ver e/ou editar;
