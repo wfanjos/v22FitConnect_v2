@@ -61,7 +61,10 @@ Decisões tomadas até agora no planejamento.
 
 ## Séries de treino
 
-- Organizadas por letra (A/B/C...) ou dia da semana, à escolha do professor.
+- Duas organizações, à escolha do professor:
+  - sequência: divisão livre, com quantos treinos e nomes quiser (ex.: A/B/C, "Peito e tríceps", "Superiores"); o "treino de hoje" é o próximo da sequência após o último feito;
+  - por dia da semana: o "treino de hoje" é o do dia.
+- O aluno sempre pode escolher outro treino da série.
 - Estrutura em blocos (bi-set, tri-set); tipos de série: normal, drop-set, rest-pause.
 - Professor define o tempo de descanso de cada exercício.
 - Prescrição: reps fixas ou faixa (8–12), até a falha, por tempo (cronômetro regressivo) e cardio (tempo, distância, intensidade).
@@ -81,7 +84,6 @@ Decisões tomadas até agora no planejamento.
 - Treino não finalizado: auto-finaliza após 3 h, com fim na última série registrada; aluno pode ajustar.
 - Treino retroativo e edição de treino concluído permitidos, marcados como "manual" (sem tempos de cronômetro); professor vê a marcação.
 - v1: histórico de treinos, gráfico de evolução de carga, recordes pessoais (maior carga e maior carga por nº de repetições, incluindo mini-séries de drop-set/rest-pause).
-
 - Tipo de carga por exercício: total, por lado, por halter ou máquina (gráficos não misturam).
 
 ## Motivação (v1)
@@ -123,6 +125,9 @@ Decisões tomadas até agora no planejamento.
 - Lembrete de treino (aluno escolhe dias e horário).
 - Convite de vínculo aceito (avisa quem enviou).
 - Todas as notificações podem ser desativadas nas configurações.
+- Lista de notificações recebidas no app (sininho), independente do push.
+- Tela de descanso: +15 s / −15 s, pular descanso e próximo exercício com a carga da última vez.
+- Atualização obrigatória: admin define a versão mínima do app; versões antigas mostram "Atualize o app" para não corromper a sincronização.
 - Push: Expo Push.
 
 ## Painel admin web
