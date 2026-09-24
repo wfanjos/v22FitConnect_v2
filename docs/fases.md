@@ -7,6 +7,7 @@ Ordem de construção da v1. Cada fase termina com um marco testável. Telas pel
 - **Ordem**: primeiro o aluno usando sozinho (inclui offline e cronômetros), depois o professor por cima.
 - **Git**: commits direto na `main`. GitHub Actions roda lint, checagem de tipos e testes a cada push.
 - **Testes**: cobertura ampla. Unidade e componentes (Jest + Testing Library), regras de acesso do banco (testes SQL de RLS), ponta a ponta (Maestro) nos fluxos de cada fase. Uma fase só fecha com os testes dela passando.
+- **Supabase**: um único projeto na nuvem, usado desde o desenvolvimento e que vira a produção definitiva, testado em 2 ou mais celulares reais. Migrations sempre versionadas no repositório. Os testes automatizados de banco (RLS) rodam no GitHub Actions, num banco temporário, sem tocar na nuvem. Antes do beta, os dados de teste da nuvem são limpos.
 - **Beta**: só com tudo pronto (fase 13). Antes disso, os testes são seus, no seu celular.
 - **Pronto quando**: telas da fase feitas em PT/EN/ES, tema claro e escuro, tablet, fonte do sistema e testes passando.
 
@@ -34,7 +35,7 @@ flowchart LR
 ### Fase 0 — Fundação
 
 - Monorepo, Expo, Vite, TypeScript, lint, GitHub Actions.
-- Projeto Supabase (dev e produção separados), migrations versionadas.
+- Projeto Supabase existente na nuvem, migrations versionadas.
 - Tema claro/escuro com os tokens da marca, fontes, componentes base (botão, campo, cartão, lista, estado vazio com mascote).
 - i18n PT/EN/ES com detecção do idioma do aparelho.
 - Sentry e PostHog.
@@ -135,11 +136,12 @@ flowchart LR
 - Landing page (LP-01 a LP-05), domínio, e-mail de suporte.
 - Conta Google Play, fichas das lojas, capturas de tela.
 - Beta fechado: 5–10 professores e seus alunos (cobre a exigência de 12 testadores por 14 dias).
+- Limpeza dos dados de teste da nuvem antes do beta.
 - Correções do beta e publicação na Play Store; App Store quando a taxa da Apple for paga.
 
 ## Antes de começar a fase 0
 
-- [ ] Criar os projetos Supabase (dev e produção)
+- [x] Projeto Supabase na nuvem (já existe)
 - [ ] Conta Expo (EAS) gratuita
 - [ ] Contas Sentry e PostHog gratuitas
 - [ ] Credenciais de login Google (Google Cloud) e Apple (exige conta Apple Developer, que pode esperar até a fase 13; até lá, testar Apple só no simulador ou deixar para depois)
