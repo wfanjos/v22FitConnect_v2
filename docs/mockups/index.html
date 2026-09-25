@@ -1,0 +1,900 @@
+<title>V22 Fit Connect Mockups</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Figtree:wght@400;500;600;700;800&display=swap">
+<style>
+/* ---------- Página (segue o tema de quem vê) ---------- */
+:root{
+  --pg-bg:#E8EBF0; --pg-card:#F6F7F9; --pg-text:#0B1B34; --pg-muted:#56627A; --pg-line:#D2D8E1; --pg-accent:#AF2530;
+  --f-disp:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--pg-bg:#070B12; --pg-card:#0E141F; --pg-text:#E4E8EF; --pg-muted:#8C97AA; --pg-line:#1F2735; --pg-accent:#D8434E; color-scheme:dark}
+}
+:root[data-theme="dark"]{--pg-bg:#070B12; --pg-card:#0E141F; --pg-text:#E4E8EF; --pg-muted:#8C97AA; --pg-line:#1F2735; --pg-accent:#D8434E; color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--pg-bg);color:var(--pg-text);font:15px/1.5 var(--f-body)}
+.wrap{max-width:1560px;margin:0 auto;padding-inline:24px;padding-block:28px 64px}
+@media (max-width:520px){.wrap{padding-inline:16px}}
+
+.top{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-end;justify-content:space-between;padding-bottom:22px;border-bottom:1px solid var(--pg-line)}
+.brand{display:flex;gap:14px;align-items:center}
+.brand svg{width:46px;height:46px;color:var(--pg-accent);flex:none}
+.eyebrow-pg{font:700 11px/1 var(--f-disp);letter-spacing:.14em;text-transform:uppercase;color:var(--pg-muted)}
+h1.pg{margin:6px 0 0;font:800 30px/1.05 var(--f-disp);font-stretch:118%;letter-spacing:-.01em;text-wrap:balance}
+.intro{max-width:62ch;color:var(--pg-muted);margin:14px 0 0}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--pg-bg);display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;padding-block:12px;border-bottom:1px solid var(--pg-line)}
+.nav{display:flex;flex-wrap:wrap;gap:6px}
+.nav a{font:600 13px/1 var(--f-body);color:var(--pg-text);text-decoration:none;padding:8px 12px;border-radius:999px;border:1px solid var(--pg-line);background:var(--pg-card)}
+.nav a:hover{border-color:var(--pg-muted)}
+.nav a:focus-visible,.toggle button:focus-visible{outline:2px solid var(--pg-accent);outline-offset:2px}
+.toggle{display:inline-flex;padding:3px;border-radius:999px;background:var(--pg-card);border:1px solid var(--pg-line)}
+.toggle button{font:700 13px/1 var(--f-body);border:0;background:transparent;color:var(--pg-muted);padding:8px 14px;border-radius:999px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.toggle button[aria-pressed="true"]{background:var(--pg-text);color:var(--pg-bg)}
+.toggle-lbl{font-size:13px;color:var(--pg-muted);margin-right:8px}
+
+section.grp{padding-top:40px}
+.grp-h{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;margin-bottom:20px}
+.grp-h h2{margin:0;font:800 22px/1.1 var(--f-disp);font-stretch:112%}
+.grp-h p{margin:0;color:var(--pg-muted);font-size:14px;max-width:70ch}
+
+.phones{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(360px,100%),1fr));gap:36px 28px;justify-items:center}
+figure.mock{margin:0;display:flex;flex-direction:column;gap:12px;width:min(360px,100%)}
+figcaption{font-size:13.5px;color:var(--pg-muted);line-height:1.45}
+figcaption b{display:flex;gap:8px;align-items:baseline;color:var(--pg-text);font:700 15px/1.2 var(--f-body);margin-bottom:3px}
+figcaption code{font:700 11.5px/1 var(--f-disp);letter-spacing:.06em;color:var(--pg-accent);background:transparent;border:1px solid currentColor;border-radius:5px;padding:3px 5px}
+
+/* ---------- App: tokens por tema (controlados pelo botão) ---------- */
+#mock.app-dark{
+  --bg:#040C19; --surface:#0B172A; --surface-2:#132440; --line:#1D2E4B; --text:#EFE8D8; --muted:#8E9AB1; --faint:#5A6883;
+  --accent:#C8323D; --accent-press:#A92631; --on-accent:#FFF6EA; --accent-soft:rgba(200,50,61,.16);
+  --ok:#43BC8C; --warn:#E9A23B; --gold:#E4B54F; --info:#6FA3E8;
+  --hero:#2A0C14; --hero-2:#5A1620; --hero-text:#F6EDDB; --hero-muted:#D6B4B6; --eagle-mark:rgba(232,72,84,.32); --hero-ghost:rgba(255,255,255,.1); --hero-cta:#F6EDDB; --hero-cta-text:#6E1824; --hero-border:#6B1E2A;
+  --shadow:0 1px 0 rgba(255,255,255,.03);
+  color-scheme:dark;
+}
+#mock.app-light{
+  --bg:#F5EFE3; --surface:#FFFCF6; --surface-2:#ECE4D3; --line:#DED4C0; --text:#0A2143; --muted:#5B6781; --faint:#98A0B2;
+  --accent:#AF2530; --accent-press:#921C27; --on-accent:#FFF8EE; --accent-soft:rgba(175,37,48,.10);
+  --ok:#1D8659; --warn:#A96A12; --gold:#9A700E; --info:#2A5FA8;
+  --hero:#0A2143; --hero-2:#12305C; --hero-text:#F6EDDB; --hero-muted:#AEBAD0; --eagle-mark:rgba(200,50,61,.38); --hero-ghost:rgba(255,255,255,.1); --hero-cta:#AF2530; --hero-cta-text:#FFF8EE; --hero-border:#0A2143;
+  --shadow:0 1px 2px rgba(10,33,67,.06);
+  color-scheme:light;
+}
+
+.phone{width:100%;height:760px;border-radius:46px;padding:9px;background:#0A0D13;box-shadow:0 0 0 1px var(--pg-line),0 22px 44px -22px rgba(0,0,0,.55)}
+.screen{position:relative;height:100%;border-radius:37px;overflow:hidden;background:var(--bg);color:var(--text);font:15px/1.4 var(--f-body);display:flex;flex-direction:column}
+.screen::after{content:"";position:absolute;left:50%;bottom:7px;width:118px;height:4px;border-radius:4px;background:var(--text);opacity:.35;transform:translateX(-50%);pointer-events:none}
+.sb{height:36px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:4px 24px 0 28px;font:700 13px/1 var(--f-body);position:relative;z-index:3}
+.sb .ic{display:flex;gap:5px;align-items:center}
+.sb svg.lucide{width:15px;height:15px;stroke-width:2.4}
+.body{flex:1;min-height:0;overflow:hidden;padding:6px 18px 18px;display:flex;flex-direction:column;gap:14px}
+.body.tight{gap:10px}
+
+svg.lucide{width:20px;height:20px;stroke-width:2;flex:none}
+.ic-sm svg.lucide, svg.lucide.ic-sm{width:16px;height:16px}
+svg.lucide.ic-lg{width:26px;height:26px}
+
+.disp{font-family:var(--f-disp);font-stretch:115%;font-weight:800;letter-spacing:-.01em}
+.num{font-family:var(--f-disp);font-stretch:108%;font-weight:700;font-variant-numeric:tabular-nums}
+.eb{font:700 11px/1 var(--f-disp);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.xs{font-size:12px}
+.row{display:flex;align-items:center;gap:10px}
+.between{justify-content:space-between}
+.col{display:flex;flex-direction:column}
+.grow{flex:1;min-width:0}
+.ell{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.appbar{display:flex;align-items:center;gap:10px;min-height:44px}
+.appbar h3{margin:0;font:800 24px/1.1 var(--f-disp);font-stretch:115%;flex:1}
+.appbar h4{margin:0;font:700 17px/1.2 var(--f-body);flex:1;text-align:center}
+.iconbtn{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line);color:var(--text);position:relative;flex:none}
+.iconbtn.plain{background:transparent;border-color:transparent}
+.dot{position:absolute;top:8px;right:9px;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px var(--surface)}
+.avatar{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:800 14px/1 var(--f-disp);flex:none;background:var(--surface-2);color:var(--text)}
+.avatar.a1{background:#2B4C7E;color:#F2EBDD}.avatar.a2{background:#7A3D4A;color:#F7E9E4}.avatar.a3{background:#3F6B5A;color:#E8F4EE}.avatar.a4{background:#6B5A3A;color:#F6EDDB}.avatar.a5{background:#4C4A7A;color:#ECEAFB}
+.avatar.lg{width:64px;height:64px;font-size:22px}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.sec-t{display:flex;justify-content:space-between;align-items:baseline}
+.sec-t h5{margin:0;font:700 15px/1.2 var(--f-body)}
+.sec-t a{font-size:13px;font-weight:700;color:var(--accent);text-decoration:none}
+
+.btn{height:50px;border-radius:14px;font:700 15px/1 var(--f-body);display:flex;align-items:center;justify-content:center;gap:8px;border:0;padding:0 18px;width:100%;color:var(--text)}
+.btn-p{background:var(--accent);color:var(--on-accent)}
+.btn-s{background:var(--surface-2);color:var(--text)}
+.btn-o{background:transparent;border:1.5px solid var(--line)}
+.btn-t{background:transparent;color:var(--accent);height:40px}
+.btn-xl{height:64px;font-size:18px;border-radius:18px}
+.btn-sm{height:36px;font-size:13px;border-radius:10px;padding:0 12px;width:auto}
+
+.chip{height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line);font:600 13px/1 var(--f-body);display:inline-flex;align-items:center;gap:6px;white-space:nowrap;color:var(--text);background:var(--surface)}
+.chip.on{background:var(--text);color:var(--bg);border-color:var(--text)}
+.chip .n{font-variant-numeric:tabular-nums;opacity:.7}
+.chips{display:flex;gap:8px;flex-wrap:nowrap;overflow:hidden}
+
+.bdg{display:inline-flex;align-items:center;gap:4px;font:700 11px/1 var(--f-body);padding:4px 7px;border-radius:6px;white-space:nowrap}
+.bdg svg.lucide{width:12px;height:12px;stroke-width:2.6}
+.b-warn{color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,transparent)}
+.b-bad{color:var(--accent);background:var(--accent-soft)}
+.b-ok{color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,transparent)}
+.b-gold{color:var(--gold);background:color-mix(in srgb,var(--gold) 16%,transparent)}
+.b-neu{color:var(--muted);background:var(--surface-2)}
+.b-info{color:var(--info);background:color-mix(in srgb,var(--info) 15%,transparent)}
+
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font:600 13px/1 var(--f-body);color:var(--muted)}
+.input{height:50px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);display:flex;align-items:center;gap:10px;padding:0 14px;font-size:15px;color:var(--text)}
+.input.focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.input .ph{color:var(--faint)}
+.input svg.lucide{color:var(--muted)}
+
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;background:var(--surface-2);border-radius:12px;padding:3px}
+.seg span{height:36px;display:grid;place-items:center;border-radius:10px;font:600 13px/1 var(--f-body);color:var(--muted);text-align:center}
+.seg span.on{background:var(--surface);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.18)}
+
+.tabbar{flex:none;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;border-top:1px solid var(--line);background:var(--surface);padding:9px 4px 24px}
+.tab{display:flex;flex-direction:column;align-items:center;gap:4px;font:600 10.5px/1 var(--f-body);color:var(--muted)}
+.tab.on{color:var(--accent)}
+.tab svg.lucide{width:22px;height:22px}
+
+.list{display:flex;flex-direction:column}
+.li{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.li:last-child{border-bottom:0}
+.li .t{font-weight:700;font-size:14.5px}
+.li .s{font-size:12.5px;color:var(--muted)}
+
+.eagle{color:var(--accent)}
+.thumb{width:52px;height:52px;border-radius:12px;flex:none;background:
+  repeating-linear-gradient(135deg,var(--surface-2) 0 6px,transparent 6px 12px),var(--surface);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted)}
+.ph-anim{border-radius:18px;border:1px solid var(--line);background:repeating-linear-gradient(135deg,var(--surface-2) 0 8px,var(--surface) 8px 16px);display:grid;place-items:center;color:var(--muted);text-align:center;font-size:12px;position:relative}
+.mascot-slot{border:2px dashed color-mix(in srgb,var(--accent) 55%,transparent);border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;color:var(--muted);background:color-mix(in srgb,var(--accent) 6%,transparent);position:relative;overflow:hidden}
+.mascot-slot svg.eg{width:74px;height:74px;color:var(--accent);opacity:.55}
+.mascot-slot b{font:800 13px/1.1 var(--f-disp);letter-spacing:.08em;text-transform:uppercase;color:var(--text)}
+
+.stepper{display:grid;grid-template-columns:60px 1fr 60px;align-items:center;background:var(--surface-2);border-radius:18px;height:68px}
+.stepper .pm{height:100%;display:grid;place-items:center;color:var(--text)}
+.stepper .pm svg.lucide{width:26px;height:26px;stroke-width:2.6}
+.stepper .v{text-align:center;line-height:1}
+.stepper .v .num{font-size:30px}
+.stepper .v small{display:block;font-size:11px;color:var(--muted);margin-top:4px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+
+.toggle-sw{width:44px;height:26px;border-radius:999px;background:var(--surface-2);position:relative;flex:none;border:1px solid var(--line)}
+.toggle-sw::after{content:"";position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:var(--muted)}
+.toggle-sw.on{background:var(--accent);border-color:var(--accent)}
+.toggle-sw.on::after{left:20px;background:var(--on-accent)}
+
+/* Tela específicas */
+.hero{background:linear-gradient(160deg,var(--hero-2),var(--hero) 60%);color:var(--hero-text);border-radius:22px;padding:16px;position:relative;overflow:hidden;border:1px solid var(--hero-border)}
+.hero .mark{position:absolute;right:-38px;top:-20px;width:190px;height:190px;color:var(--eagle-mark)}
+.hero .eb{color:var(--hero-muted)}
+.hero .muted{color:var(--hero-muted)}
+.hero .btn-ghost{background:var(--hero-ghost);color:var(--hero-text)}
+.hero .btn-p{background:var(--hero-cta);color:var(--hero-cta-text)}
+
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
+.week .d{display:flex;flex-direction:column;gap:6px;align-items:center;font:600 11px/1 var(--f-body);color:var(--muted)}
+.week .c{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;border:1.5px dashed var(--line)}
+.week .c.done{background:var(--accent);border:0;color:var(--on-accent)}
+.week .c.today{border:2px solid var(--text);border-style:solid}
+.week .c svg.lucide{width:15px;height:15px;stroke-width:3}
+
+.set-row{display:grid;grid-template-columns:54px 1fr 1fr 34px;align-items:center;gap:8px;padding:9px 12px;border-radius:12px;font-size:14px}
+.set-row .k{font:700 12px/1 var(--f-body);color:var(--muted)}
+.set-row .num{font-size:16px}
+.set-row.done{color:var(--muted)}
+.set-row.done .ok{color:var(--ok)}
+.set-row.cur{background:var(--accent-soft);outline:1.5px solid color-mix(in srgb,var(--accent) 45%,transparent)}
+.set-row.cur .k{color:var(--accent)}
+
+.block{border-left:3px solid var(--accent);padding-left:10px;display:flex;flex-direction:column;gap:0}
+.blk-lbl{font:800 10.5px/1 var(--f-disp);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:flex;gap:6px;align-items:center;padding:6px 0 2px}
+
+.stat{display:flex;flex-direction:column;gap:6px}
+.stat .num{font-size:26px;line-height:1}
+.stat .lbl{font-size:12px;color:var(--muted);font-weight:600}
+
+.heat{display:grid;grid-template-columns:repeat(8,1fr);gap:4px}
+.heat i{aspect-ratio:1;border-radius:4px;background:var(--surface-2);display:block}
+.heat i.h1{background:color-mix(in srgb,var(--accent) 45%,var(--surface-2))}
+.heat i.h2{background:var(--accent)}
+
+.handle{color:var(--faint)}
+.sheet-grab{width:40px;height:5px;border-radius:5px;background:var(--line);margin:0 auto}
+
+.sw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.sw{border-radius:14px;overflow:hidden;border:1px solid var(--pg-line);background:var(--pg-card);font-size:12px}
+.sw .c{height:54px}
+.sw .m{padding:8px 10px;display:flex;flex-direction:column;gap:2px}
+.sw .m b{font-size:12.5px;color:var(--pg-text)}
+.sw .m span{font-family:ui-monospace,Consolas,monospace;color:var(--pg-muted);font-size:11px}
+
+.base{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:22px}
+.panel{background:var(--pg-card);border:1px solid var(--pg-line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.panel h3{margin:0;font:800 16px/1.2 var(--f-disp);font-stretch:112%}
+.panel .note{color:var(--pg-muted);font-size:13.5px;margin:0}
+.panel.app{background:var(--bg);color:var(--text);border-color:var(--line)}
+.panel.app h3{color:var(--text)}
+.panel.app .note{color:var(--muted)}
+.type-row{display:flex;justify-content:space-between;gap:12px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:10px}
+.type-row:last-child{border-bottom:0;padding-bottom:0}
+.type-row span.meta{font:500 11px/1.3 ui-monospace,Consolas,monospace;color:var(--muted);text-align:right;flex:none}
+
+@media (prefers-reduced-motion:no-preference){ .toggle button,.nav a{transition:background .15s,color .15s,border-color .15s} }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="eagle" viewBox="0 0 355.98 346.72"><path fill="currentColor" fill-rule="evenodd" d="M188.82,338.72 L188.27,338.53 L188.20,338.28 L188.35,337.84 L190.52,335.52 L191.88,333.39 L193.35,331.61 L194.26,330.02 L195.58,328.34 L196.27,327.02 L198.68,323.19 L202.84,315.10 L203.22,313.97 L203.76,313.02 L205.79,308.31 L206.19,306.69 L206.76,305.52 L207.18,303.93 L207.82,302.59 L208.16,300.91 L208.91,299.17 L209.17,297.40 L209.88,295.65 L210.17,293.66 L210.89,291.41 L211.17,288.67 L211.89,286.41 L212.12,282.35 L212.94,278.97 L213.00,257.77 L212.80,255.97 L212.10,253.19 L211.89,249.88 L211.18,248.10 L210.90,245.61 L210.16,243.63 L209.83,241.68 L209.19,240.34 L208.85,238.91 L208.22,237.57 L207.76,235.76 L206.22,232.31 L205.78,230.99 L205.24,230.05 L203.72,226.56 L200.86,221.17 L200.26,220.27 L199.72,219.05 L193.91,210.12 L192.66,208.61 L191.37,206.65 L189.13,204.14 L186.68,200.85 L172.56,186.71 L168.47,183.55 L165.87,181.15 L163.35,179.43 L161.53,177.75 L159.38,176.40 L157.63,174.89 L156.19,174.09 L154.38,172.64 L149.50,169.52 L148.10,168.43 L146.51,167.51 L139.63,162.89 L135.52,160.51 L134.51,159.77 L130.38,157.40 L124.50,153.77 L117.48,149.79 L116.44,149.33 L112.58,146.94 L111.39,146.39 L110.51,145.76 L105.62,142.90 L104.43,142.34 L98.48,138.78 L95.53,137.24 L91.59,134.94 L86.50,132.27 L78.52,127.51 L74.58,124.95 L73.42,124.36 L71.86,123.16 L70.40,122.37 L68.69,121.08 L67.38,120.40 L65.96,119.31 L64.38,118.39 L62.71,117.06 L61.30,116.23 L59.61,114.91 L58.04,113.99 L55.99,112.28 L54.27,111.25 L52.40,109.63 L49.74,107.79 L46.75,105.03 L43.20,102.32 L33.09,92.19 L31.60,90.42 L29.92,88.11 L28.25,86.27 L27.01,84.27 L25.57,82.46 L24.75,81.03 L22.14,77.13 L19.32,72.21 L16.24,65.79 L15.20,63.34 L14.78,61.99 L14.24,61.04 L13.81,59.45 L13.15,58.13 L12.81,56.45 L12.19,55.10 L11.83,53.18 L11.16,51.63 L10.88,49.38 L10.11,47.43 L9.84,44.43 L9.12,42.17 L8.87,37.91 L8.03,33.75 L8.00,9.27 L8.10,8.39 L8.35,8.00 L8.83,8.02 L9.32,8.46 L11.23,11.30 L14.80,14.97 L18.64,19.63 L26.07,27.20 L29.20,30.08 L32.39,32.63 L37.11,37.17 L40.41,39.61 L43.25,42.27 L45.51,43.77 L48.53,46.49 L50.76,48.02 L53.28,50.24 L55.27,51.50 L57.39,53.39 L59.53,54.74 L61.53,56.50 L63.53,57.75 L65.30,59.23 L66.73,60.04 L68.77,61.75 L70.66,62.87 L72.39,64.38 L73.96,65.31 L75.50,66.53 L77.38,67.65 L78.78,68.74 L80.51,69.76 L81.78,70.74 L83.51,71.76 L90.54,76.49 L102.96,84.32 L104.40,85.37 L105.60,85.93 L107.19,87.08 L108.65,87.87 L112.39,90.38 L113.59,90.94 L116.52,92.76 L117.66,93.61 L120.45,95.32 L121.64,95.88 L125.41,98.36 L126.60,98.93 L129.37,100.66 L130.53,101.50 L135.38,104.40 L136.58,104.95 L140.38,107.39 L149.49,112.78 L152.10,114.42 L153.38,115.39 L154.70,116.07 L156.29,117.24 L157.61,117.91 L159.20,119.07 L160.65,119.87 L162.07,120.96 L163.66,121.87 L165.20,123.07 L166.65,123.87 L168.40,125.37 L170.39,126.63 L172.19,128.09 L173.75,129.02 L176.15,131.12 L178.68,132.85 L181.01,135.02 L183.90,137.12 L188.40,141.38 L191.46,143.82 L194.56,146.71 L198.57,150.96 L201.36,154.41 L204.67,157.85 L206.39,160.38 L208.64,162.89 L210.04,164.98 L211.86,167.16 L213.01,169.02 L214.11,170.41 L215.13,172.14 L216.21,173.56 L220.75,181.02 L221.19,182.09 L224.81,188.97 L226.24,192.28 L226.79,193.22 L228.20,196.83 L228.80,197.97 L229.18,199.35 L229.82,200.69 L230.17,202.12 L230.82,203.44 L231.17,205.11 L231.87,206.64 L232.18,208.35 L232.87,209.89 L233.18,211.86 L233.89,213.62 L234.22,215.82 L234.87,217.39 L235.14,220.15 L235.92,222.58 L236.11,225.43 L236.90,227.86 L237.08,231.71 L237.74,234.54 L238.00,237.52 L238.00,259.76 L237.74,262.25 L237.08,264.82 L236.94,268.71 L236.12,271.36 L235.89,274.40 L235.19,276.18 L234.88,278.64 L234.18,280.42 L233.87,282.38 L233.18,283.92 L232.79,285.81 L232.21,286.96 L231.82,288.58 L231.18,289.93 L230.82,291.34 L229.25,294.75 L228.79,296.05 L226.76,300.26 L222.87,307.12 L218.86,313.11 L216.87,315.38 L214.55,318.56 L204.54,328.54 L202.02,330.28 L199.75,332.26 L198.29,333.04 L196.78,334.29 L195.41,334.92 L193.65,336.16 L190.53,337.78 L189.51,338.51 L188.82,338.72 Z M249.29,266.70 L248.91,266.66 L248.74,266.15 L249.11,262.35 L249.94,256.24 L250.00,240.52 L249.74,237.54 L249.07,233.98 L248.94,229.82 L248.15,226.65 L247.92,223.09 L247.11,220.42 L246.86,217.90 L246.15,216.13 L245.86,213.65 L245.15,211.89 L244.83,209.69 L244.14,208.14 L243.85,206.16 L243.23,204.80 L242.88,203.14 L242.24,201.80 L241.87,200.15 L241.22,198.81 L240.81,197.20 L240.19,195.84 L239.82,194.45 L239.22,193.31 L238.80,191.97 L238.27,191.01 L237.77,189.51 L236.79,187.23 L236.24,186.29 L235.77,185.00 L232.74,179.03 L227.21,169.57 L226.14,168.14 L225.12,166.40 L224.24,165.28 L223.23,163.54 L221.80,161.73 L220.76,160.01 L218.65,157.63 L217.51,155.77 L215.36,153.41 L213.52,150.76 L210.26,147.26 L206.55,142.73 L196.57,132.71 L191.50,128.53 L189.43,126.59 L189.02,126.05 L188.92,125.54 L189.06,125.04 L191.23,121.99 L194.24,118.99 L198.21,115.97 L198.69,115.34 L198.59,114.85 L196.49,113.54 L194.61,111.91 L192.34,110.43 L190.64,108.88 L188.35,107.42 L186.40,105.62 L184.00,104.02 L181.39,101.64 L178.21,99.32 L173.49,94.78 L170.29,91.99 L166.78,88.00 L162.21,83.31 L160.03,80.25 L158.52,78.51 L157.74,77.04 L156.28,75.24 L153.37,70.48 L153.30,70.10 L153.55,69.83 L154.19,69.87 L157.37,71.40 L158.71,71.81 L160.05,72.46 L161.68,72.85 L162.82,73.45 L164.49,73.80 L166.02,74.49 L167.72,74.81 L169.26,75.50 L170.96,75.82 L172.51,76.51 L174.74,76.80 L176.30,77.47 L178.50,77.79 L180.24,78.52 L182.79,78.75 L184.77,79.49 L187.53,79.76 L189.74,80.52 L193.01,80.78 L195.45,81.56 L198.80,81.74 L200.88,82.39 L201.93,82.58 L206.56,82.73 L210.20,83.55 L217.07,83.75 L222.19,84.55 L232.12,84.70 L238.39,85.43 L241.64,85.61 L250.12,85.68 L253.05,86.00 L255.69,86.56 L261.33,86.72 L264.72,87.53 L268.54,87.75 L270.75,88.51 L273.56,88.73 L275.76,89.50 L278.24,89.79 L279.81,90.45 L281.98,90.81 L283.32,91.45 L285.00,91.79 L286.33,92.43 L287.92,92.86 L289.09,93.43 L290.43,93.85 L296.60,96.93 L298.31,98.22 L299.76,99.02 L301.62,100.65 L304.81,102.96 L309.05,107.22 L309.70,108.07 L310.38,109.39 L311.77,111.01 L314.74,116.03 L316.76,120.26 L317.32,121.96 L318.11,123.17 L318.75,123.53 L320.53,123.75 L322.30,124.47 L324.24,124.79 L325.58,125.44 L327.13,125.90 L329.38,126.90 L331.46,128.06 L335.40,130.62 L339.57,134.70 L340.62,135.91 L341.56,137.46 L342.74,139.03 L344.78,142.99 L345.22,144.31 L345.82,145.45 L346.17,147.11 L346.89,148.63 L347.16,151.38 L347.96,154.54 L347.98,169.00 L347.64,171.41 L347.45,171.95 L347.12,172.31 L346.67,172.43 L346.22,172.27 L343.79,169.99 L340.58,167.95 L336.35,165.93 L334.83,165.44 L333.49,164.79 L331.53,164.48 L329.55,163.74 L327.24,163.53 L325.31,162.96 L323.81,162.74 L318.13,162.64 L315.57,162.82 L312.54,163.53 L309.73,163.74 L307.77,164.51 L305.57,164.84 L304.44,165.43 L302.78,165.79 L301.46,166.46 L300.12,166.88 L294.54,169.79 L291.63,171.63 L287.60,174.61 L281.45,180.70 L280.15,182.16 L278.78,184.29 L277.40,185.91 L276.64,187.40 L275.39,188.89 L274.73,190.24 L272.33,194.34 L269.21,200.96 L268.79,202.30 L268.18,203.42 L267.81,204.82 L267.22,205.97 L266.82,207.83 L266.13,209.37 L265.83,211.34 L265.14,212.89 L264.85,215.36 L264.11,217.11 L263.87,219.39 L263.14,221.38 L262.88,224.15 L262.11,226.35 L261.88,229.15 L261.11,231.35 L260.89,234.16 L260.13,236.36 L259.89,238.91 L259.18,240.68 L258.90,243.17 L258.16,244.91 L257.83,246.85 L257.21,248.21 L256.83,250.09 L256.19,251.44 L255.81,252.82 L255.21,253.96 L254.78,255.55 L253.22,258.96 L252.84,260.10 L251.19,263.19 L249.88,266.13 L249.57,266.55 L249.29,266.70 Z M197.57,293.63 L197.34,293.58 L197.08,293.17 L196.74,291.53 L196.14,289.89 L195.87,288.14 L195.18,286.60 L194.82,284.69 L194.18,283.35 L193.77,281.75 L193.26,280.77 L192.84,279.43 L192.24,278.29 L191.79,276.99 L191.24,276.05 L189.77,272.75 L187.87,269.16 L184.71,264.06 L183.25,262.27 L181.91,260.11 L180.22,258.31 L176.81,253.96 L170.29,247.49 L167.02,245.00 L164.67,242.85 L162.42,241.36 L160.53,239.75 L158.52,238.50 L156.83,237.19 L155.39,236.38 L153.71,235.07 L152.42,234.35 L150.67,233.10 L143.61,228.92 L142.39,228.38 L122.61,216.92 L121.40,216.38 L117.51,214.01 L114.41,212.37 L103.61,205.91 L102.42,205.35 L98.55,202.98 L97.38,202.40 L92.37,199.41 L85.68,195.10 L84.37,194.41 L82.96,193.31 L81.37,192.41 L79.96,191.31 L78.37,190.41 L76.97,189.31 L75.27,188.26 L73.52,186.76 L71.49,185.53 L69.50,183.77 L67.35,182.42 L64.55,179.73 L61.37,177.40 L49.58,165.70 L46.78,161.99 L44.86,159.92 L42.98,157.29 L41.12,155.15 L40.00,153.28 L38.58,151.44 L37.76,150.02 L36.34,148.19 L33.25,143.27 L32.68,142.09 L30.36,138.17 L27.22,132.07 L25.27,127.76 L24.75,126.27 L24.22,125.31 L23.80,123.97 L23.20,122.83 L22.81,121.46 L22.21,120.32 L21.83,118.93 L21.19,117.59 L20.87,116.15 L20.22,114.81 L19.87,113.39 L19.31,112.32 L19.29,111.92 L19.44,111.73 L19.83,111.63 L20.41,111.88 L21.61,113.16 L23.56,114.72 L25.35,116.42 L27.65,117.87 L29.63,119.64 L31.75,121.02 L34.04,122.98 L35.78,124.00 L37.49,125.53 L39.52,126.76 L41.15,128.12 L42.76,129.02 L44.38,130.39 L45.96,131.31 L50.50,134.53 L54.82,137.20 L56.40,138.38 L57.72,139.06 L59.31,140.22 L60.64,140.88 L64.38,143.39 L65.58,143.95 L69.40,146.38 L70.60,146.93 L74.41,149.36 L80.35,152.67 L81.38,153.39 L82.58,153.95 L88.42,157.35 L91.59,158.94 L97.41,162.36 L100.63,163.90 L106.42,167.35 L109.55,168.98 L113.42,171.35 L114.64,171.89 L118.49,174.29 L129.07,180.45 L130.39,181.39 L131.72,182.06 L133.35,183.18 L136.95,185.33 L138.38,186.39 L142.64,188.88 L146.92,191.86 L148.65,192.87 L150.31,194.21 L151.87,195.15 L153.49,196.53 L155.66,197.87 L157.48,199.55 L160.41,201.62 L163.28,204.25 L166.68,206.84 L176.57,216.70 L179.98,221.05 L181.67,222.85 L183.01,225.02 L184.35,226.68 L185.25,228.27 L186.12,229.40 L187.88,232.15 L190.64,237.13 L192.75,241.52 L193.21,242.82 L193.81,243.96 L194.23,245.30 L194.84,246.43 L195.23,247.80 L195.88,249.14 L196.21,250.83 L196.83,252.18 L197.23,254.31 L197.83,255.68 L198.16,258.38 L198.90,260.36 L199.09,263.70 L199.91,267.84 L200.01,278.76 L199.89,280.91 L199.11,285.09 L198.94,288.20 L198.18,290.66 L197.94,293.16 L197.57,293.63 Z M282.64,137.39 L289.22,130.97 L292.27,129.03 L294.55,127.81 L299.10,125.86 L300.71,125.45 L302.08,124.85 L304.21,124.50 L304.45,124.31 L304.45,123.97 L304.05,123.70 L301.03,122.76 L298.23,122.53 L295.58,121.70 L292.22,121.55 L289.87,120.90 L288.36,120.68 L283.14,120.62 L275.79,120.26 L272.66,120.24 L263.13,120.62 L260.15,120.61 L259.50,120.72 L259.09,120.97 L259.04,121.20 L259.33,121.49 L261.31,121.97 L265.60,123.93 L271.25,127.53 L276.66,131.86 L278.83,134.19 L281.11,137.17 L281.92,137.54 L282.64,137.39 Z"/></symbol>
+  <symbol id="g-google" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.8c-1 .7-2.2 1-3.7 1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14c-.2-.7-.4-1.4-.4-2s.2-1.4.4-2V7.2H2.1a11 11 0 0 0 0 9.7L5.8 14z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.6l3.2-3.2A11 11 0 0 0 2.1 7.2L5.8 10c.9-2.6 3.3-4.6 6.2-4.6z"/></symbol>
+  <symbol id="g-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.8-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9a5 5 0 0 0-4.2 2.6c-1.8 3.1-.5 7.7 1.3 10.2.8 1.2 1.8 2.6 3.1 2.6 1.3-.1 1.7-.8 3.3-.8 1.5 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5a11 11 0 0 0 1.4-2.9 4.5 4.5 0 0 1-2.4-4.1zM13.9 5c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></symbol>
+</svg>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="brand">
+        <svg aria-hidden="true"><use href="#eagle"/></svg>
+        <div>
+          <div class="eyebrow-pg">V22 Fit Connect · mockups da v1 · rodada 1</div>
+          <h1 class="pg">Base visual e telas principais</h1>
+        </div>
+      </div>
+      <p class="intro">Primeira rodada: a base visual (cores, fontes, componentes) e 15 telas que definem o jeito do app. Os códigos seguem <code>docs/telas.md</code>. O botão ao lado troca todas as telas entre o tema escuro e o claro. Dados de exemplo, fictícios.</p>
+    </div>
+  </header>
+
+  <div class="bar">
+    <nav class="nav" aria-label="Seções">
+      <a href="#base">Base visual</a>
+      <a href="#entrada">Entrada</a>
+      <a href="#aluno">Aluno</a>
+      <a href="#treino">Treino</a>
+      <a href="#professor">Professor</a>
+      <a href="#editor">Editor de série</a>
+    </nav>
+    <div class="row" style="gap:0">
+      <span class="toggle-lbl">Tema do app</span>
+      <div class="toggle" role="group" aria-label="Tema do app">
+        <button type="button" id="t-dark" aria-pressed="true">Escuro</button>
+        <button type="button" id="t-light" aria-pressed="false">Claro</button>
+      </div>
+    </div>
+  </div>
+
+<div id="mock" class="app-dark">
+
+<!-- ================= BASE VISUAL ================= -->
+<section class="grp" id="base">
+  <div class="grp-h"><h2>Base visual</h2><p>As regras que todas as telas seguem. Depois de aprovada, vira o arquivo de tema do app (cores, fontes, espaçamentos).</p></div>
+  <div class="base">
+    <div class="panel">
+      <h3>Cores · tema escuro</h3>
+      <div class="sw-grid">
+        <div class="sw"><div class="c" style="background:#040C19"></div><div class="m"><b>Fundo</b><span>#040C19</span></div></div>
+        <div class="sw"><div class="c" style="background:#0B172A"></div><div class="m"><b>Superfície</b><span>#0B172A</span></div></div>
+        <div class="sw"><div class="c" style="background:#132440"></div><div class="m"><b>Superfície 2</b><span>#132440</span></div></div>
+        <div class="sw"><div class="c" style="background:#EFE8D8"></div><div class="m"><b>Texto (creme)</b><span>#EFE8D8</span></div></div>
+        <div class="sw"><div class="c" style="background:#C8323D"></div><div class="m"><b>Destaque (águia)</b><span>#C8323D</span></div></div>
+        <div class="sw"><div class="c" style="background:#8E9AB1"></div><div class="m"><b>Texto apagado</b><span>#8E9AB1</span></div></div>
+      </div>
+      <p class="note">O vermelho foi clareado um pouco em relação ao logo (<code>#901A27</code>) para os botões terem contraste suficiente sobre o azul-marinho.</p>
+    </div>
+    <div class="panel">
+      <h3>Cores · tema claro</h3>
+      <div class="sw-grid">
+        <div class="sw"><div class="c" style="background:#F5EFE3"></div><div class="m"><b>Fundo (creme)</b><span>#F5EFE3</span></div></div>
+        <div class="sw"><div class="c" style="background:#FFFCF6"></div><div class="m"><b>Superfície</b><span>#FFFCF6</span></div></div>
+        <div class="sw"><div class="c" style="background:#ECE4D3"></div><div class="m"><b>Superfície 2</b><span>#ECE4D3</span></div></div>
+        <div class="sw"><div class="c" style="background:#0A2143"></div><div class="m"><b>Texto (marinho)</b><span>#0A2143</span></div></div>
+        <div class="sw"><div class="c" style="background:#AF2530"></div><div class="m"><b>Destaque (águia)</b><span>#AF2530</span></div></div>
+        <div class="sw"><div class="c" style="background:#5B6781"></div><div class="m"><b>Texto apagado</b><span>#5B6781</span></div></div>
+      </div>
+      <p class="note">Cores de estado nos dois temas: verde para feito, âmbar para aviso (série vencendo, aluno parado), dourado só para recordes e conquistas.</p>
+    </div>
+    <div class="panel app">
+      <h3>Fontes</h3>
+      <div class="type-row"><span class="disp" style="font-size:30px;line-height:1">Treino B</span><span class="meta">Archivo larga · 800<br>títulos</span></div>
+      <div class="type-row"><span class="num" style="font-size:40px;line-height:1">42,5 <span style="font-size:18px" class="muted">kg</span></span><span class="meta">Archivo · 700<br>números e cargas</span></div>
+      <div class="type-row"><span style="font:700 17px/1.2 var(--f-body)">Remada curvada com barra</span><span class="meta">Figtree · 700<br>nomes, botões</span></div>
+      <div class="type-row"><span style="font-size:15px">3 séries de 10 · descanso de 60 s</span><span class="meta">Figtree · 400<br>texto</span></div>
+      <div class="type-row"><span class="eb">Treino de hoje</span><span class="meta">Archivo · caixa alta<br>rótulos</span></div>
+      <p class="note">As duas fontes são gratuitas (Google Fonts) e existem no Expo. Os tamanhos crescem junto com a fonte do sistema.</p>
+    </div>
+    <div class="panel app">
+      <h3>Componentes</h3>
+      <div class="col" style="gap:10px">
+        <div class="btn btn-p">Iniciar treino</div>
+        <div class="row"><div class="btn btn-s">Trocar treino</div><div class="btn btn-o">Cancelar</div></div>
+        <div class="input focus"><i data-lucide="mail"></i><span>marina.alves@email.com</span></div>
+        <div class="seg"><span class="on">Sequência</span><span>Por dia da semana</span></div>
+        <div class="chips" style="flex-wrap:wrap"><span class="chip on">Todos <span class="n">27</span></span><span class="chip">Ativos <span class="n">20</span></span><span class="chip">Parados <span class="n">4</span></span></div>
+        <div class="row" style="flex-wrap:wrap;gap:6px"><span class="bdg b-ok"><i data-lucide="check"></i>Feito</span><span class="bdg b-warn"><i data-lucide="clock"></i>Vence em 3 dias</span><span class="bdg b-bad">Vencida</span><span class="bdg b-gold"><i data-lucide="trophy"></i>Recorde</span><span class="bdg b-neu">Manual</span><span class="bdg b-info">CREF verificado</span></div>
+      </div>
+    </div>
+    <div class="panel app">
+      <h3>Barras de abas</h3>
+      <div class="col" style="gap:12px">
+        <div class="eb">Aluno · 5 abas</div>
+        <div class="tabbar" style="border:1px solid var(--line);border-radius:16px;padding:10px 4px">
+          <span class="tab on"><i data-lucide="house"></i>Início</span><span class="tab"><i data-lucide="list-checks"></i>Séries</span><span class="tab"><i data-lucide="chart-line"></i>Progresso</span><span class="tab"><i data-lucide="users"></i>Professores</span><span class="tab"><i data-lucide="circle-user"></i>Perfil</span>
+        </div>
+        <div class="eb">Professor · 4 abas</div>
+        <div class="tabbar" style="border:1px solid var(--line);border-radius:16px;padding:10px 4px">
+          <span class="tab on"><i data-lucide="layout-dashboard"></i>Painel</span><span class="tab"><i data-lucide="users"></i>Alunos</span><span class="tab"><i data-lucide="layers"></i>Modelos</span><span class="tab"><i data-lucide="circle-user"></i>Perfil</span>
+        </div>
+      </div>
+      <p class="note">Ícones: Lucide (gratuito, tem versão para React Native).</p>
+    </div>
+    <div class="panel app">
+      <h3>Tamanhos e cantos</h3>
+      <div class="col small" style="gap:8px">
+        <div class="row between"><span>Botão normal</span><span class="num">50 px</span></div>
+        <div class="row between"><span>Botão da tela de treino</span><span class="num">64–68 px</span></div>
+        <div class="row between"><span>Margem lateral</span><span class="num">18 px</span></div>
+        <div class="row between"><span>Canto de cartão / botão</span><span class="num">18 / 14 px</span></div>
+        <div class="row between"><span>Área mínima de toque</span><span class="num">44 px</span></div>
+      </div>
+      <p class="note">Na tela de treino tudo é maior para usar com a mão suada ou de luva.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENTRADA ================= -->
+<section class="grp" id="entrada">
+  <div class="grp-h"><h2>Entrada</h2><p>Primeiro contato com o app.</p></div>
+  <div class="phones">
+
+  <!-- E-02 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen">
+      <div style="position:absolute;inset:0 0 auto 0;height:430px;overflow:hidden">
+        <img src="img/harpia-carioca.jpg" alt="Harpia, mascote do V22, na barra do calçadão" style="width:100%;height:100%;object-fit:cover;object-position:50% 12%;display:block">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,12,25,.35) 0%,transparent 22%,transparent 55%,var(--bg) 100%)"></div>
+      </div>
+      <div class="sb" style="color:#fff"><span>9:41</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="row between" style="padding:6px 18px 0;position:relative;z-index:2;color:#F6EDDB">
+        <div class="row" style="gap:8px"><svg width="30" height="30" style="color:#E0404C"><use href="#eagle"/></svg><span class="disp" style="font-size:18px">V22</span></div>
+        <span class="chip" style="background:rgba(4,12,25,.5);border-color:rgba(255,255,255,.25);color:#F6EDDB"><i data-lucide="globe" class="ic-sm"></i>PT</span>
+      </div>
+      <div class="body" style="margin-top:auto;flex:none;position:relative;z-index:2;gap:16px">
+        <div class="col" style="gap:8px">
+          <div class="disp" style="font-size:29px;line-height:1.04;text-wrap:balance">Seu treino, do jeito do seu professor.</div>
+          <div class="muted">A série no celular, a carga de cada série anotada e sua evolução guardada.</div>
+        </div>
+        <div class="card flat" style="display:flex;gap:12px;align-items:center;padding:12px">
+          <div class="iconbtn" style="background:var(--accent-soft);border:0;color:var(--accent)"><i data-lucide="wifi-off"></i></div>
+          <div class="grow"><div style="font-weight:700;font-size:14px">Funciona sem internet</div><div class="xs muted">Treine no subsolo da academia; sincroniza depois.</div></div>
+        </div>
+        <div class="row" style="justify-content:center;gap:6px"><i style="width:18px;height:6px;border-radius:3px;background:var(--accent);display:block"></i><i style="width:6px;height:6px;border-radius:3px;background:var(--line);display:block"></i><i style="width:6px;height:6px;border-radius:3px;background:var(--line);display:block"></i></div>
+        <div class="col" style="gap:10px">
+          <div class="btn btn-p">Criar conta</div>
+          <div class="btn btn-o">Já tenho conta</div>
+        </div>
+      </div>
+    </div></div>
+    <figcaption><b><code>E-02</code>Boas-vindas</b>Harpia aprovada no topo, sumindo no fundo. Três cartões deslizantes (sem internet, evolução, professor). Idioma trocável já aqui.</figcaption>
+  </figure>
+
+  <!-- E-03 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen">
+      <div class="sb"><span>9:41</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="body" style="gap:18px">
+        <div class="appbar"><span class="iconbtn plain"><i data-lucide="arrow-left"></i></span></div>
+        <div class="col" style="gap:10px">
+          <svg width="44" height="44" class="eagle"><use href="#eagle"/></svg>
+          <div class="disp" style="font-size:28px">Entrar</div>
+          <div class="muted small">Use a mesma conta como aluno ou professor.</div>
+        </div>
+        <div class="col" style="gap:12px">
+          <div class="field"><label>E-mail</label><div class="input"><i data-lucide="mail"></i><span>marina.alves@email.com</span></div></div>
+          <div class="field"><label>Senha</label><div class="input focus"><i data-lucide="lock"></i><span class="grow" style="letter-spacing:3px">••••••••</span><i data-lucide="eye"></i></div></div>
+          <a class="small" style="color:var(--accent);font-weight:700;align-self:flex-end;text-decoration:none">Esqueci a senha</a>
+        </div>
+        <div class="btn btn-p">Entrar</div>
+        <div class="row small muted" style="gap:12px"><span class="grow" style="height:1px;background:var(--line)"></span>ou<span class="grow" style="height:1px;background:var(--line)"></span></div>
+        <div class="col" style="gap:10px">
+          <div class="btn btn-o"><svg width="20" height="20"><use href="#g-google"/></svg>Continuar com Google</div>
+          <div class="btn btn-o"><svg width="20" height="20"><use href="#g-apple"/></svg>Continuar com Apple</div>
+        </div>
+        <div class="small muted" style="text-align:center;margin-top:auto">Não tem conta? <b style="color:var(--accent)">Criar conta</b></div>
+      </div>
+    </div></div>
+    <figcaption><b><code>E-03</code>Login</b>E-mail e senha primeiro, Google e Apple abaixo. Mesmo layout serve para o cadastro (E-04) com nome e aceite dos termos.</figcaption>
+  </figure>
+
+  </div>
+</section>
+
+<!-- ================= ALUNO ================= -->
+<section class="grp" id="aluno">
+  <div class="grp-h"><h2>Aluno</h2><p>O dia a dia de quem treina. Exemplo: Marina, aluna do Prof. Rafael.</p></div>
+  <div class="phones">
+
+  <!-- AL-01 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen">
+      <div class="sb"><span>17:32</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="body tight">
+        <div class="appbar">
+          <div class="grow"><div class="small muted">Quarta, 24 set</div><div style="font:800 22px/1.15 var(--f-disp);font-stretch:112%">Boa tarde, Marina</div></div>
+          <span class="iconbtn"><i data-lucide="bell"></i><span class="dot"></span></span>
+        </div>
+        <div class="hero">
+          <svg class="mark" aria-hidden="true"><use href="#eagle"/></svg>
+          <div class="eb">Treino de hoje</div>
+          <div class="disp" style="font-size:30px;margin-top:8px;line-height:1">Treino B</div>
+          <div style="font-weight:600;margin-top:4px">Costas e bíceps</div>
+          <div class="row small muted" style="margin-top:10px;gap:14px"><span class="row" style="gap:5px"><i data-lucide="dumbbell" class="ic-sm"></i>7 exercícios</span><span class="row" style="gap:5px"><i data-lucide="timer" class="ic-sm"></i>~55 min</span></div>
+          <div class="xs muted" style="margin-top:4px">Hipertrofia fase 2 · Prof. Rafael Souza</div>
+          <div class="row" style="margin-top:14px;gap:8px">
+            <div class="btn btn-p" style="flex:1.6"><i data-lucide="play"></i>Iniciar</div>
+            <div class="btn btn-ghost" style="flex:1">Trocar</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row between"><div style="font-weight:700">Meta da semana</div><span class="row small" style="gap:5px;color:var(--warn);font-weight:700"><i data-lucide="flame" class="ic-sm"></i>5 semanas seguidas</span></div>
+          <div class="row" style="gap:6px;margin:4px 0 12px"><span class="num" style="font-size:22px">2</span><span class="muted small">de 4 treinos</span></div>
+          <div class="week">
+            <div class="d">S<span class="c done"><i data-lucide="check"></i></span></div>
+            <div class="d">T<span class="c"></span></div>
+            <div class="d">Q<span class="c done"><i data-lucide="check"></i></span></div>
+            <div class="d" style="color:var(--text)">Q<span class="c today"></span></div>
+            <div class="d">S<span class="c"></span></div>
+            <div class="d">S<span class="c"></span></div>
+            <div class="d">D<span class="c"></span></div>
+          </div>
+        </div>
+        <div class="card flat row" style="padding:12px;gap:12px;border-color:color-mix(in srgb,var(--warn) 45%,var(--line))">
+          <span style="color:var(--warn)"><i data-lucide="calendar-clock"></i></span>
+          <div class="grow"><div style="font-weight:700;font-size:14px">Sua série vence em 3 dias</div><div class="xs muted">Hipertrofia fase 2 · até 27 set</div></div>
+          <i data-lucide="chevron-right" class="muted"></i>
+        </div>
+      </div>
+      <div class="tabbar"><span class="tab on"><i data-lucide="house"></i>Início</span><span class="tab"><i data-lucide="list-checks"></i>Séries</span><span class="tab"><i data-lucide="chart-line"></i>Progresso</span><span class="tab"><i data-lucide="users"></i>Professores</span><span class="tab"><i data-lucide="circle-user"></i>Perfil</span></div>
+    </div></div>
+    <figcaption><b><code>AL-01</code>Início</b>O treino de hoje é o próximo da sequência (ontem foi o A). "Iniciar" ocupa o topo; meta da semana e avisos abaixo. O cartão do treino, com a águia ao fundo, é o elemento de marca mais forte: vinho no tema escuro e azul-marinho no claro, sempre o bloco de maior contraste da tela.</figcaption>
+  </figure>
+
+  <!-- AL-10 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen">
+      <div class="sb"><span>17:33</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="body">
+        <div class="appbar"><h3>Séries</h3><span class="btn btn-p btn-sm"><i data-lucide="plus" class="ic-sm"></i>Criar série</span></div>
+        <div class="col" style="gap:10px">
+          <div class="row" style="gap:10px"><span class="avatar a1" style="width:28px;height:28px;font-size:11px">RS</span><span style="font-weight:700;font-size:14px">Prof. Rafael Souza</span><span class="bdg b-info">CREF verificado</span></div>
+          <div class="card">
+            <div class="row between"><div style="font-weight:800;font-size:16px">Hipertrofia fase 2</div><span class="bdg b-warn"><i data-lucide="clock"></i>Vence em 3 dias</span></div>
+            <div class="xs muted" style="margin-top:4px">Sequência · até 27 set · meta 4 por semana</div>
+            <div class="row" style="gap:6px;margin-top:12px;flex-wrap:wrap">
+              <span class="chip" style="height:28px">A · Peito e tríceps</span><span class="chip on" style="height:28px">B · Costas</span><span class="chip" style="height:28px">C · Pernas</span>
+            </div>
+          </div>
+          <div class="card" style="opacity:.92">
+            <div class="row between"><div style="font-weight:800;font-size:16px">Mobilidade de ombro</div><span class="bdg b-bad">Vencida</span></div>
+            <div class="xs muted" style="margin-top:4px">Por dia da semana · venceu em 10 set · ainda pode usar</div>
+          </div>
+        </div>
+        <div class="col" style="gap:10px">
+          <div class="row" style="gap:10px"><span class="avatar" style="width:28px;height:28px;font-size:11px;background:var(--accent);color:var(--on-accent)">MA</span><span style="font-weight:700;font-size:14px">Minhas séries</span></div>
+          <div class="card">
+            <div class="row between"><div style="font-weight:800;font-size:16px">Corrida + core</div><span class="iconbtn plain" style="width:28px;height:28px"><i data-lucide="pencil" class="ic-sm"></i></span></div>
+            <div class="xs muted" style="margin-top:4px">Por dia da semana · sem data de fim</div>
+            <div class="row" style="gap:6px;margin-top:12px">
+              <span class="chip" style="height:28px">Seg</span><span class="chip" style="height:28px">Qua</span><span class="chip" style="height:28px">Sex</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tabbar"><span class="tab"><i data-lucide="house"></i>Início</span><span class="tab on"><i data-lucide="list-checks"></i>Séries</span><span class="tab"><i data-lucide="chart-line"></i>Progresso</span><span class="tab"><i data-lucide="users"></i>Professores</span><span class="tab"><i data-lucide="circle-user"></i>Perfil</span></div>
+    </div></div>
+    <figcaption><b><code>AL-10</code>Minhas séries</b>Agrupadas por autor. Séries do professor não têm lápis (o aluno só executa); as próprias têm. O treino marcado em cada série é o próximo da sequência.</figcaption>
+  </figure>
+
+  <!-- AL-12 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen">
+      <div class="sb"><span>17:34</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="body tight" style="padding-bottom:0">
+        <div class="appbar"><span class="iconbtn plain"><i data-lucide="arrow-left"></i></span><h4>Hipertrofia fase 2</h4><span class="iconbtn plain"><i data-lucide="eye"></i></span></div>
+        <div>
+          <div class="disp" style="font-size:28px;line-height:1">Treino B</div>
+          <div style="font-weight:600;margin-top:4px">Costas e bíceps</div>
+          <div class="row xs muted" style="gap:12px;margin-top:6px"><span>7 exercícios</span><span>~55 min</span><span>Último: 17 set</span></div>
+        </div>
+        <div class="list">
+          <div class="li"><span class="thumb"><i data-lucide="dumbbell"></i></span><div class="grow"><div class="t">Puxada frente aberta</div><div class="s">1 aquec. + 4 × 8–12 · desc. 90 s · 3-1-1-0</div></div></div>
+          <div class="block">
+            <div class="blk-lbl"><i data-lucide="link" class="ic-sm"></i>Bi-set · desc. 60 s no fim</div>
+            <div class="li" style="border-bottom:0;padding-top:6px"><span class="thumb"><i data-lucide="dumbbell"></i></span><div class="grow"><div class="t">Remada curvada com barra</div><div class="s">3 × 10</div></div></div>
+            <div class="li" style="padding-top:4px"><span class="thumb"><i data-lucide="dumbbell"></i></span><div class="grow"><div class="t">Pulldown braço reto</div><div class="s">3 × 12</div></div></div>
+          </div>
+          <div class="li"><span class="thumb"><i data-lucide="dumbbell"></i></span><div class="grow"><div class="t">Remada baixa triângulo</div><div class="s">3 × até a falha · drop-set · desc. 90 s</div></div></div>
+          <div class="li"><span class="thumb"><i data-lucide="dumbbell"></i></span><div class="grow"><div class="t">Rosca direta barra W</div><div class="s">3 × 10–12 · desc. 60 s</div></div></div>
+          <div class="li"><span class="thumb"><i data-lucide="dumbbell"></i></span><div class="grow"><div class="t">Rosca martelo</div><div class="s">3 × 12 · carga por halter</div></div></div>
+        </div>
+      </div>
+      <div style="padding:12px 18px 26px;border-top:1px solid var(--line);background:var(--surface)"><div class="btn btn-p btn-xl"><i data-lucide="play"></i>Iniciar treino B</div></div>
+    </div></div>
+    <figcaption><b><code>AL-12</code>Detalhe do treino</b>Blocos (bi-set) marcados com a linha vermelha. Cada linha resume a prescrição; tocar abre o guia do exercício (C-01). O olho no topo mostra quem montou a série.</figcaption>
+  </figure>
+
+  </div>
+</section>
+
+<!-- ================= TREINO ================= -->
+<section class="grp" id="treino">
+  <div class="grp-h"><h2>Treino em execução</h2><p>Tela cheia, sem abas, botões grandes. Pensada para usar entre uma série e outra, sem precisão.</p></div>
+  <div class="phones">
+
+  <!-- TR-01 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen">
+      <div class="sb"><span>18:06</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="body tight" style="padding-bottom:22px">
+        <div class="row between">
+          <span class="iconbtn"><i data-lucide="x"></i></span>
+          <div class="col" style="align-items:center;gap:2px"><span class="num" style="font-size:20px">18:42</span><span class="xs muted">Exercício 2 de 7</span></div>
+          <span class="iconbtn"><i data-lucide="list"></i></span>
+        </div>
+        <div class="row" style="gap:4px"><i style="flex:1;height:4px;border-radius:2px;background:var(--accent);display:block"></i><i style="flex:1;height:4px;border-radius:2px;background:color-mix(in srgb,var(--accent) 45%,var(--line));display:block"></i><i style="flex:1;height:4px;border-radius:2px;background:var(--line);display:block"></i><i style="flex:1;height:4px;border-radius:2px;background:var(--line);display:block"></i><i style="flex:1;height:4px;border-radius:2px;background:var(--line);display:block"></i><i style="flex:1;height:4px;border-radius:2px;background:var(--line);display:block"></i><i style="flex:1;height:4px;border-radius:2px;background:var(--line);display:block"></i></div>
+        <div class="ph-anim" style="height:128px"><div class="col" style="align-items:center;gap:6px"><i data-lucide="repeat"></i>Animação: posição inicial ⇄ final</div><span class="chip" style="position:absolute;right:10px;bottom:10px;height:28px"><i data-lucide="info" class="ic-sm"></i>Guia</span></div>
+        <div>
+          <div class="row" style="gap:8px"><span class="bdg b-bad"><i data-lucide="link"></i>Bi-set 1 de 2</span><span class="xs muted">depois: Pulldown braço reto</span></div>
+          <div style="font:800 21px/1.15 var(--f-disp);font-stretch:108%;margin-top:6px">Remada curvada com barra</div>
+          <div class="small muted" style="margin-top:3px">3 × 10 · cadência 3-1-1-0 · desc. 60 s no fim do bloco</div>
+        </div>
+        <div class="col" style="gap:2px">
+          <div class="set-row done"><span class="k">Aquec.</span><span class="num">20 kg</span><span class="num">15</span><span class="ok"><i data-lucide="check"></i></span></div>
+          <div class="set-row done"><span class="k">Série 1</span><span class="num">40 kg</span><span class="num">10</span><span class="ok"><i data-lucide="check"></i></span></div>
+          <div class="set-row cur"><span class="k">Série 2</span><span class="num">40 kg</span><span class="num">10</span><span></span></div>
+          <div class="set-row" style="color:var(--muted)"><span class="k">Série 3</span><span class="num">40 kg</span><span class="num">10</span><span></span></div>
+        </div>
+        <div class="xs muted row" style="gap:6px"><i data-lucide="history" class="ic-sm"></i>Última vez (17 set): 37,5 kg × 10, 10, 9</div>
+        <div class="row" style="gap:8px">
+          <div class="stepper grow"><span class="pm"><i data-lucide="minus"></i></span><span class="v"><span class="num">40</span><small>kg</small></span><span class="pm"><i data-lucide="plus"></i></span></div>
+          <div class="stepper grow"><span class="pm"><i data-lucide="minus"></i></span><span class="v"><span class="num">10</span><small>reps</small></span><span class="pm"><i data-lucide="plus"></i></span></div>
+        </div>
+        <div class="row" style="gap:8px;margin-top:auto">
+          <div class="btn btn-s btn-xl" style="flex:1;font-size:15px"><i data-lucide="skip-forward"></i>Pular</div>
+          <div class="btn btn-p btn-xl" style="flex:2.2"><i data-lucide="check" class="ic-lg"></i>Feito</div>
+        </div>
+      </div>
+    </div></div>
+    <figcaption><b><code>TR-01</code>Exercício atual</b>Carga e reps já vêm preenchidas com a prescrição; ajusta com + e − grandes (passo de 2,5 kg). "Feito" registra e abre o descanso. Menu à direita abre a visão geral e "Substituir exercício".</figcaption>
+  </figure>
+
+  <!-- TR-02 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen">
+      <div class="sb"><span>18:07</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="body" style="padding-bottom:22px">
+        <div class="row between">
+          <span class="iconbtn"><i data-lucide="x"></i></span>
+          <div class="col" style="align-items:center;gap:2px"><span class="num" style="font-size:20px">19:31</span><span class="xs muted">Exercício 2 de 7</span></div>
+          <span class="iconbtn"><i data-lucide="list"></i></span>
+        </div>
+        <div style="position:relative;width:260px;height:260px;margin:8px auto 0">
+          <svg viewBox="0 0 260 260" width="260" height="260" style="transform:rotate(-90deg)">
+            <circle cx="130" cy="130" r="116" fill="none" stroke="var(--surface-2)" stroke-width="14"/>
+            <circle cx="130" cy="130" r="116" fill="none" stroke="var(--accent)" stroke-width="14" stroke-linecap="round" stroke-dasharray="728.85" stroke-dashoffset="348"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+            <span class="eb">Descanso</span>
+            <span class="num" style="font-size:72px;line-height:.9">0:47</span>
+            <span class="small muted">de 1:30</span>
+          </div>
+        </div>
+        <div class="row" style="gap:10px">
+          <div class="btn btn-s btn-xl num" style="flex:1;font-size:20px">−15 s</div>
+          <div class="btn btn-s btn-xl num" style="flex:1;font-size:20px">+15 s</div>
+        </div>
+        <div class="card" style="padding:14px">
+          <div class="eb" style="margin-bottom:8px">A seguir</div>
+          <div class="row" style="gap:12px">
+            <span class="thumb"><i data-lucide="dumbbell"></i></span>
+            <div class="grow"><div style="font-weight:700">Remada baixa triângulo</div><div class="xs muted">Série 1 de 3 · até a falha · drop-set</div></div>
+          </div>
+          <div class="row small" style="margin-top:10px;gap:6px"><i data-lucide="history" class="ic-sm muted"></i><span class="muted">Última vez:</span><b class="num">45 kg × 12</b></div>
+        </div>
+        <div class="btn btn-p btn-xl" style="margin-top:auto"><i data-lucide="skip-forward"></i>Pular descanso</div>
+      </div>
+    </div></div>
+    <figcaption><b><code>TR-02</code>Descanso</b>Número enorme, legível com o celular no banco. ±15 s e pular com botões de 64 px. Ao zerar: som e vibração, mesmo com a tela bloqueada (notificação fixa).</figcaption>
+  </figure>
+
+  <!-- TR-07 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen">
+      <div class="sb"><span>18:58</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="body" style="padding-bottom:22px">
+        <div class="col" style="align-items:center;text-align:center;gap:6px;margin-top:6px">
+          <svg width="46" height="46" class="eagle"><use href="#eagle"/></svg>
+          <div class="disp" style="font-size:28px">Treino concluído</div>
+          <div class="small muted">Treino B · Costas e bíceps · 24 set</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="card stat"><span class="num">52<span class="muted" style="font-size:15px"> min</span></span><span class="lbl">Duração</span></div>
+          <div class="card stat"><span class="num">8.420<span class="muted" style="font-size:15px"> kg</span></span><span class="lbl">Volume</span></div>
+          <div class="card stat"><span class="num">7<span class="muted" style="font-size:15px"> / 7</span></span><span class="lbl">Exercícios · 1 trocado</span></div>
+          <div class="card stat"><span class="num">22</span><span class="lbl">Séries feitas</span></div>
+        </div>
+        <div class="card" style="border-color:color-mix(in srgb,var(--gold) 45%,var(--line))">
+          <div class="row" style="gap:8px;color:var(--gold);font-weight:800"><i data-lucide="trophy"></i>2 recordes novos</div>
+          <div class="list" style="margin-top:4px">
+            <div class="li" style="padding:8px 0"><span class="grow small">Puxada frente aberta</span><b class="num">55 kg × 10</b></div>
+            <div class="li" style="padding:8px 0"><span class="grow small">Rosca direta barra W</span><b class="num">30 kg × 12</b></div>
+          </div>
+        </div>
+        <div class="input" style="height:auto;min-height:50px;align-items:flex-start;padding-top:14px"><span class="ph">Como foi o treino? (opcional)</span></div>
+        <div class="col" style="gap:10px;margin-top:auto">
+          <div class="btn btn-p">Salvar treino</div>
+          <div class="btn btn-o"><i data-lucide="camera"></i>Tirar foto do treino</div>
+        </div>
+      </div>
+    </div></div>
+    <figcaption><b><code>TR-07</code>Finalizar</b>Resumo antes de salvar; observação livre vai para o professor. "Tirar foto" leva à TR-09 (câmera + arte com logo). Ao salvar, se houve recorde, abre a TR-08.</figcaption>
+  </figure>
+
+  <!-- TR-08 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen" style="background:radial-gradient(120% 70% at 50% 30%,color-mix(in srgb,var(--gold) 22%,var(--bg)) 0%,var(--bg) 70%)">
+      <div class="sb"><span>18:59</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="body" style="padding-bottom:22px;align-items:center;text-align:center">
+        <div class="row" style="align-self:stretch;justify-content:flex-end"><span class="iconbtn plain"><i data-lucide="x"></i></span></div>
+        <div class="mascot-slot" style="width:240px;height:300px">
+          <svg class="eg"><use href="#eagle"/></svg>
+          <b>Pose: recorde pessoal</b>
+          <span class="xs">Harpia erguendo a anilha<br>(imagem a gerar, ver prompts.md)</span>
+        </div>
+        <div class="col" style="gap:4px;align-items:center">
+          <span class="bdg b-gold" style="font-size:12px"><i data-lucide="trophy"></i>Recorde pessoal</span>
+          <div class="disp" style="font-size:32px;margin-top:6px">Novo recorde!</div>
+          <div style="font-weight:600">Puxada frente aberta</div>
+        </div>
+        <div class="num" style="font-size:52px;line-height:1;color:var(--gold)">55 <span style="font-size:24px">kg</span> <span style="font-size:24px;color:var(--muted)">× 10</span></div>
+        <div class="small muted">+2,5 kg desde 17 set (52,5 kg × 10)</div>
+        <div class="col" style="gap:10px;margin-top:auto;align-self:stretch">
+          <div class="btn btn-p">Continuar</div>
+          <div class="btn btn-o"><i data-lucide="share-2"></i>Compartilhar</div>
+        </div>
+      </div>
+    </div></div>
+    <figcaption><b><code>TR-08</code>Recorde pessoal</b>Celebração com a harpia. O dourado só aparece aqui e nas conquistas, para ter peso. Com 2 recordes, desliza entre eles.</figcaption>
+  </figure>
+
+  </div>
+</section>
+
+<!-- ================= PROFESSOR ================= -->
+<section class="grp" id="professor">
+  <div class="grp-h"><h2>Professor</h2><p>Acompanhamento dos alunos. Exemplo: Prof. Rafael, 27 alunos.</p></div>
+  <div class="phones">
+
+  <!-- PR-01 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen">
+      <div class="sb"><span>19:10</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="body tight">
+        <div class="appbar">
+          <div class="grow"><div class="small muted">CREF 012345-G/RJ</div><div style="font:800 22px/1.15 var(--f-disp);font-stretch:112%">Olá, Rafael</div></div>
+          <span class="iconbtn"><i data-lucide="bell"></i><span class="dot"></span></span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <div class="card stat" style="padding:12px"><span class="num">6</span><span class="lbl">Treinos hoje</span></div>
+          <div class="card stat" style="padding:12px"><span class="num">23</span><span class="lbl">Ativos</span></div>
+          <div class="card stat" style="padding:12px;border-color:color-mix(in srgb,var(--warn) 50%,var(--line))"><span class="num" style="color:var(--warn)">4</span><span class="lbl">Parados 7+ dias</span></div>
+        </div>
+        <div class="card" style="padding:12px 14px">
+          <div class="sec-t"><h5>Pedidos de vínculo · 2</h5><a>Ver</a></div>
+          <div class="li" style="border:0;padding-bottom:2px">
+            <span class="avatar a3">LC</span>
+            <div class="grow"><div class="t">Lucas Costa</div><div class="s ell">"Treino na Smart Fit Botafogo, vi seu perfil…"</div></div>
+          </div>
+          <div class="row" style="gap:8px;margin-top:8px"><div class="btn btn-s btn-sm" style="flex:1">Recusar</div><div class="btn btn-p btn-sm" style="flex:1">Aceitar</div></div>
+        </div>
+        <div class="card" style="padding:12px 14px">
+          <div class="sec-t"><h5>Concluíram hoje</h5><a>Todos</a></div>
+          <div class="list">
+            <div class="li"><span class="avatar a2">MA</span><div class="grow"><div class="t">Marina Alves</div><div class="s">Treino B · 52 min</div></div><span class="bdg b-gold"><i data-lucide="trophy"></i>2</span></div>
+            <div class="li"><span class="avatar a1">JP</span><div class="grow"><div class="t">João Pedro Lima</div><div class="s">Treino A · 48 min · <span style="color:var(--muted)">manual</span></div></div></div>
+          </div>
+        </div>
+        <div class="card flat row" style="padding:12px;gap:12px">
+          <span style="color:var(--warn)"><i data-lucide="calendar-clock"></i></span>
+          <div class="grow"><div style="font-weight:700;font-size:14px">3 séries vencendo esta semana</div><div class="xs muted">Carla, Marina, Pedro</div></div>
+          <i data-lucide="chevron-right" class="muted"></i>
+        </div>
+      </div>
+      <div class="tabbar"><span class="tab on"><i data-lucide="layout-dashboard"></i>Painel</span><span class="tab"><i data-lucide="users"></i>Alunos</span><span class="tab"><i data-lucide="layers"></i>Modelos</span><span class="tab"><i data-lucide="circle-user"></i>Perfil</span></div>
+    </div></div>
+    <figcaption><b><code>PR-01</code>Painel</b>O que precisa de ação primeiro: pedidos, quem treinou, quem sumiu, séries vencendo. Anamneses vazias aparecem como mais um cartão, abaixo.</figcaption>
+  </figure>
+
+  <!-- PR-10 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen">
+      <div class="sb"><span>19:11</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="body tight">
+        <div class="appbar"><h3>Alunos</h3><span class="btn btn-p btn-sm"><i data-lucide="user-plus" class="ic-sm"></i>Convidar</span></div>
+        <div class="input"><i data-lucide="search"></i><span class="ph">Buscar aluno</span></div>
+        <div class="chips"><span class="chip on">Todos <span class="n">27</span></span><span class="chip">Ativos <span class="n">20</span></span><span class="chip">Parados <span class="n">4</span></span><span class="chip">Vencendo <span class="n">3</span></span></div>
+        <div class="list">
+          <div class="li"><span class="avatar a2">MA</span><div class="grow"><div class="t">Marina Alves</div><div class="s">Hoje · 3 de 4 na semana</div></div><span class="bdg b-warn">Vence 27/9</span></div>
+          <div class="li"><span class="avatar a1">JP</span><div class="grow"><div class="t">João Pedro Lima</div><div class="s">Hoje · 2 de 3 na semana</div></div></div>
+          <div class="li"><span class="avatar a4">CD</span><div class="grow"><div class="t">Carla Dias</div><div class="s" style="color:var(--warn)">Último treino há 9 dias</div></div><span class="bdg b-warn">Parada</span></div>
+          <div class="li"><span class="avatar a5">BR</span><div class="grow"><div class="t">Bruno Ramos</div><div class="s">Ontem · 4 de 4 na semana</div></div><span class="bdg b-ok"><i data-lucide="check"></i>Meta</span></div>
+          <div class="li"><span class="avatar a3">TS</span><div class="grow"><div class="t">Tatiane Souza</div><div class="s">Sem série ainda</div></div><span class="bdg b-neu">Nova</span></div>
+          <div class="li"><span class="avatar a1">PH</span><div class="grow"><div class="t">Pedro Henrique</div><div class="s">Seg · 1 de 3 na semana</div></div><span class="bdg b-warn">Vence 28/9</span></div>
+        </div>
+      </div>
+      <div class="tabbar"><span class="tab"><i data-lucide="layout-dashboard"></i>Painel</span><span class="tab on"><i data-lucide="users"></i>Alunos</span><span class="tab"><i data-lucide="layers"></i>Modelos</span><span class="tab"><i data-lucide="circle-user"></i>Perfil</span></div>
+    </div></div>
+    <figcaption><b><code>PR-10</code>Alunos</b>Cada linha diz quando treinou e como está na meta da semana. Selos só quando algo pede atenção. "Ex-alunos" (PR-17) fica no fim da lista.</figcaption>
+  </figure>
+
+  <!-- PR-11 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen">
+      <div class="sb"><span>19:12</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="body tight">
+        <div class="appbar"><span class="iconbtn plain"><i data-lucide="arrow-left"></i></span><span class="grow"></span><span class="iconbtn plain"><i data-lucide="ellipsis-vertical"></i></span></div>
+        <div class="row" style="gap:14px">
+          <span class="avatar a2 lg">MA</span>
+          <div class="grow">
+            <div style="font:800 21px/1.15 var(--f-disp);font-stretch:110%">Marina Alves</div>
+            <div class="small muted">28 anos · Hipertrofia · desde mar 2026</div>
+            <div class="row" style="gap:6px;margin-top:6px"><span class="bdg b-ok"><i data-lucide="shield-check"></i>Saúde compartilhada</span></div>
+          </div>
+        </div>
+        <div class="seg"><span class="on">Resumo</span><span>Séries</span><span>Treinos</span><span>Saúde</span></div>
+        <div class="card">
+          <div class="row between"><div style="font-weight:700">Frequência · 8 semanas</div><span class="small muted">meta 4</span></div>
+          <div class="heat" style="margin-top:10px">
+            <i class="h2"></i><i class="h2"></i><i class="h1"></i><i class="h2"></i><i class="h2"></i><i class="h2"></i><i class="h1"></i><i class="h2"></i>
+          </div>
+          <div class="row between xs muted" style="margin-top:6px"><span>ago</span><span>esta semana</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="card stat" style="padding:12px">
+            <span class="lbl">Peso</span>
+            <span class="num" style="font-size:22px">62,4 <span class="muted" style="font-size:13px">kg</span></span>
+            <svg viewBox="0 0 120 30" width="100%" height="30" aria-hidden="true"><polyline points="0,8 20,10 40,9 60,14 80,17 100,20 120,22" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="120" cy="22" r="3" fill="var(--accent)"/></svg>
+            <span class="xs muted">−1,2 kg em 30 dias</span>
+          </div>
+          <div class="card stat" style="padding:12px">
+            <span class="lbl">Recordes no mês</span>
+            <span class="num" style="font-size:22px;color:var(--gold)">5</span>
+            <span class="xs muted" style="margin-top:auto">Último: puxada frente 55 kg × 10</span>
+          </div>
+        </div>
+        <div class="card flat" style="padding:12px 14px">
+          <div class="row between"><div class="grow"><div style="font-weight:700;font-size:14px">Hipertrofia fase 2</div><div class="xs muted">Sequência A/B/C · vence 27 set</div></div><span class="bdg b-warn">3 dias</span></div>
+        </div>
+        <div class="row" style="gap:8px;margin-top:auto"><div class="btn btn-s" style="flex:1"><i data-lucide="clipboard-plus"></i>Avaliação</div><div class="btn btn-p" style="flex:1.3"><i data-lucide="plus"></i>Nova série</div></div>
+      </div>
+      <div class="tabbar"><span class="tab"><i data-lucide="layout-dashboard"></i>Painel</span><span class="tab on"><i data-lucide="users"></i>Alunos</span><span class="tab"><i data-lucide="layers"></i>Modelos</span><span class="tab"><i data-lucide="circle-user"></i>Perfil</span></div>
+    </div></div>
+    <figcaption><b><code>PR-11</code>Ficha do aluno</b>Abas no topo reúnem PR-11 a PR-15. "Saúde" (anamnese e avaliações) só aparece se a aluna autorizou. No tablet, a lista de alunos fica à esquerda desta ficha.</figcaption>
+  </figure>
+
+  </div>
+</section>
+
+<!-- ================= EDITOR ================= -->
+<section class="grp" id="editor">
+  <div class="grp-h"><h2>Editor de série</h2><p>Os mesmos componentes servem ao professor (série para aluno, modelos) e ao aluno (séries próprias).</p></div>
+  <div class="phones">
+
+  <!-- C-10 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen">
+      <div class="sb"><span>20:02</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="body tight">
+        <div class="appbar"><span class="iconbtn plain"><i data-lucide="x"></i></span><h4>Nova série</h4><span style="font-weight:800;color:var(--accent);padding:0 6px">Salvar</span></div>
+        <div class="row small" style="gap:8px;padding:10px 12px;border-radius:12px;background:var(--surface-2)"><span class="avatar a2" style="width:24px;height:24px;font-size:10px">MA</span>Para <b>Marina Alves</b><span class="grow"></span><i data-lucide="chevron-down" class="ic-sm muted"></i></div>
+        <div class="field"><label>Nome da série</label><div class="input focus"><span>Hipertrofia fase 3</span></div></div>
+        <div class="field"><label>Organização</label><div class="seg"><span class="on">Sequência</span><span>Por dia da semana</span></div></div>
+        <div class="row" style="gap:10px">
+          <div class="field grow"><label>Vale até</label><div class="input"><i data-lucide="calendar"></i><span class="num" style="font-weight:600">22/11/2026</span></div></div>
+          <div class="field" style="width:132px"><label>Meta semanal</label><div class="input" style="justify-content:space-between;padding:0 8px"><i data-lucide="minus"></i><span class="num" style="font-weight:700;font-size:17px">4</span><i data-lucide="plus"></i></div></div>
+        </div>
+        <div class="sec-t" style="margin-top:4px"><h5>Treinos</h5><span class="xs muted">arraste para reordenar</span></div>
+        <div class="col" style="gap:8px">
+          <div class="card flat row" style="padding:12px;gap:10px"><i data-lucide="grip-vertical" class="handle"></i><span class="disp" style="font-size:18px;width:22px">A</span><div class="grow"><div style="font-weight:700;font-size:14px">Peito e tríceps</div><div class="xs muted">6 exercícios</div></div><i data-lucide="chevron-right" class="muted"></i></div>
+          <div class="card flat row" style="padding:12px;gap:10px"><i data-lucide="grip-vertical" class="handle"></i><span class="disp" style="font-size:18px;width:22px">B</span><div class="grow"><div style="font-weight:700;font-size:14px">Costas e bíceps</div><div class="xs muted">7 exercícios · 1 bi-set</div></div><i data-lucide="chevron-right" class="muted"></i></div>
+          <div class="card flat row" style="padding:12px;gap:10px"><i data-lucide="grip-vertical" class="handle"></i><span class="disp" style="font-size:18px;width:22px">C</span><div class="grow"><div style="font-weight:700;font-size:14px">Pernas</div><div class="xs muted">8 exercícios</div></div><i data-lucide="chevron-right" class="muted"></i></div>
+          <div class="btn btn-o" style="border-style:dashed"><i data-lucide="plus"></i>Adicionar treino</div>
+        </div>
+        <div class="btn btn-t" style="margin-top:auto"><i data-lucide="eye"></i>Ver como a aluna vai ver</div>
+      </div>
+    </div></div>
+    <figcaption><b><code>C-10</code>Editor de série</b>Nome livre para cada treino. Em "Por dia da semana" a lista vira Seg–Dom com dias de folga. O link no rodapé abre a prévia (C-13).</figcaption>
+  </figure>
+
+  <!-- C-11 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen">
+      <div class="sb"><span>20:04</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="body tight">
+        <div class="appbar" style="background:var(--accent-soft);border-radius:14px;padding:0 4px"><span class="iconbtn plain"><i data-lucide="x"></i></span><h4 style="text-align:left">2 selecionados</h4><span class="xs muted" style="padding-right:10px">Treino B</span></div>
+        <div class="input"><span class="grow" style="font-weight:700">Costas e bíceps</span><i data-lucide="pencil" class="ic-sm"></i></div>
+        <div class="col" style="gap:8px">
+          <div class="card flat row" style="padding:10px 12px;gap:10px"><i data-lucide="grip-vertical" class="handle"></i><div class="grow"><div style="font-weight:700;font-size:14px">Puxada frente aberta</div><div class="xs muted">1 aquec. + 4 × 8–12 · 90 s</div></div><i data-lucide="chevron-right" class="muted"></i></div>
+          <div class="card flat" style="padding:8px 12px 10px;border-color:color-mix(in srgb,var(--accent) 50%,var(--line))">
+            <div class="row between"><span class="blk-lbl"><i data-lucide="link" class="ic-sm"></i>Bi-set · 60 s no fim</span><span class="xs" style="color:var(--accent);font-weight:700">Desfazer</span></div>
+            <div class="row" style="gap:10px;padding:6px 0"><i data-lucide="grip-vertical" class="handle"></i><div class="grow"><div style="font-weight:700;font-size:14px">Remada curvada com barra</div><div class="xs muted">3 × 10</div></div></div>
+            <div class="row" style="gap:10px;padding:6px 0 0;border-top:1px solid var(--line)"><i data-lucide="grip-vertical" class="handle"></i><div class="grow"><div style="font-weight:700;font-size:14px">Pulldown braço reto</div><div class="xs muted">3 × 12</div></div></div>
+          </div>
+          <div class="card flat row" style="padding:10px 12px;gap:10px;background:var(--accent-soft);border-color:var(--accent)"><span style="color:var(--accent)"><i data-lucide="square-check"></i></span><div class="grow"><div style="font-weight:700;font-size:14px">Rosca direta barra W</div><div class="xs muted">3 × 10–12 · 60 s</div></div></div>
+          <div class="card flat row" style="padding:10px 12px;gap:10px;background:var(--accent-soft);border-color:var(--accent)"><span style="color:var(--accent)"><i data-lucide="square-check"></i></span><div class="grow"><div style="font-weight:700;font-size:14px">Rosca martelo</div><div class="xs muted">3 × 12 · por halter</div></div></div>
+          <div class="card flat row" style="padding:10px 12px;gap:10px"><i data-lucide="grip-vertical" class="handle"></i><div class="grow"><div style="font-weight:700;font-size:14px">Prancha</div><div class="xs muted">3 × 45 s</div></div><i data-lucide="chevron-right" class="muted"></i></div>
+        </div>
+      </div>
+      <div style="padding:12px 18px 26px;border-top:1px solid var(--line);background:var(--surface)"><div class="btn btn-p"><i data-lucide="link"></i>Juntar em bi-set</div></div>
+    </div></div>
+    <figcaption><b><code>C-11</code>Editor de treino</b>Mostrada no modo de seleção: segurar um exercício troca o topo por "2 selecionados" (o X sai do modo) e o rodapé vira "Juntar em bi-set" (ou tri-set, com 3). Fora desse modo, o rodapé é "Adicionar exercício". Arrastar pela alça reordena. Tocar abre a prescrição.</figcaption>
+  </figure>
+
+  <!-- C-12 -->
+  <figure class="mock">
+    <div class="phone"><div class="screen">
+      <div class="sb"><span>20:05</span><span class="ic"><i data-lucide="signal"></i><i data-lucide="wifi"></i><i data-lucide="battery-full"></i></span></div>
+      <div class="body tight" style="padding-bottom:0">
+        <div class="appbar"><span class="iconbtn plain"><i data-lucide="arrow-left"></i></span><div class="grow"><div style="font-weight:800;font-size:16px">Puxada frente aberta</div><div class="xs muted">Costas · polia alta</div></div><span class="xs" style="color:var(--accent);font-weight:700">Trocar</span></div>
+        <div class="field"><label>Tipo</label>
+          <div class="chips" style="flex-wrap:wrap;gap:6px"><span class="chip" style="height:30px">Reps fixas</span><span class="chip on" style="height:30px">Faixa</span><span class="chip" style="height:30px">Até a falha</span><span class="chip" style="height:30px">Tempo</span><span class="chip" style="height:30px">Cardio</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:10px">
+          <div class="field"><label>Séries</label><div class="input" style="justify-content:space-between;padding:0 10px"><i data-lucide="minus"></i><span class="num" style="font-size:18px">4</span><i data-lucide="plus"></i></div></div>
+          <div class="field"><label>Repetições</label><div class="input" style="justify-content:center;gap:8px"><span class="num" style="font-size:18px">8</span><span class="muted">a</span><span class="num" style="font-size:18px">12</span></div></div>
+        </div>
+        <div class="row between" style="padding:4px 0"><div><div style="font-weight:700;font-size:14px">Aquecimento</div><div class="xs muted">1 série de 15 · não conta para recordes</div></div><span class="toggle-sw on"></span></div>
+        <div class="field"><label>Técnica</label><div class="seg"><span class="on">Normal</span><span>Drop-set</span><span>Rest-pause</span></div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="field"><label>Carga sugerida</label><div class="input"><span class="num" style="font-size:17px">50</span><span class="muted">kg</span></div></div>
+          <div class="field"><label>Descanso</label><div class="input" style="justify-content:space-between;padding:0 10px"><i data-lucide="minus"></i><span class="num" style="font-size:17px">90 s</span><i data-lucide="plus"></i></div></div>
+        </div>
+        <div class="field"><label>Cadência (desce · pausa · sobe · pausa)</label>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px"><div class="input num" style="justify-content:center;font-size:18px">3</div><div class="input num" style="justify-content:center;font-size:18px">1</div><div class="input num" style="justify-content:center;font-size:18px">1</div><div class="input num" style="justify-content:center;font-size:18px">0</div></div>
+        </div>
+        <div class="field"><label>Tipo de carga</label><div class="seg"><span class="on">Total</span><span>Por lado</span><span>Halter</span><span>Máquina</span></div></div>
+      </div>
+      <div style="padding:12px 18px 26px;border-top:1px solid var(--line);background:var(--surface)"><div class="btn btn-p">Aplicar</div></div>
+    </div></div>
+    <figcaption><b><code>C-12</code>Prescrição do exercício</b>Os campos mudam com o tipo: "Tempo" troca reps por segundos; "Cardio" mostra tempo, distância e intensidade. Observação para o aluno fica abaixo, rolando.</figcaption>
+  </figure>
+
+  </div>
+</section>
+
+</div><!-- #mock -->
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script>
+(function(){
+  var mock=document.getElementById('mock');
+  var bd=document.getElementById('t-dark'), bl=document.getElementById('t-light');
+  function set(mode){
+    mock.className = mode==='light' ? 'app-light' : 'app-dark';
+    bd.setAttribute('aria-pressed', mode!=='light');
+    bl.setAttribute('aria-pressed', mode==='light');
+    try{localStorage.setItem('v22-mock-theme',mode)}catch(e){}
+  }
+  var saved=null; try{saved=localStorage.getItem('v22-mock-theme')}catch(e){}
+  set(saved||'dark');
+  bd.addEventListener('click',function(){set('dark')});
+  bl.addEventListener('click',function(){set('light')});
+  if(window.lucide){ lucide.createIcons(); }
+})();
+</script>

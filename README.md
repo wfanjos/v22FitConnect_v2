@@ -10,6 +10,7 @@ App de treinos de musculação que conecta aluno e professor. Faz parte da marca
 | [`docs/telas.md`](docs/telas.md) | Mapa de todas as telas e da navegação |
 | [`docs/modelo-dados.md`](docs/modelo-dados.md) | Tabelas, regras de acesso e sincronização offline |
 | [`docs/fases.md`](docs/fases.md) | Fases de desenvolvimento da v1, com marcos e testes |
+| [`docs/mockups/`](docs/mockups/) | Mockups em HTML: base visual e telas (abrir `index.html` no navegador) |
 | [`assets/brand/`](assets/brand/) | Logo, símbolo, versões SVG/transparentes e ícones do Expo ([README](assets/brand/README.md)) |
 | [`assets/brand/mascote/`](assets/brand/mascote/) | Imagens de referência aprovadas do mascote |
 | [`docs/mascote/prompts.md`](docs/mascote/prompts.md) | Ficha do mascote e prompts para gerar novas poses |
