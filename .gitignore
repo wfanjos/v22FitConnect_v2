@@ -1,0 +1,54 @@
+# Dependências
+node_modules/
+.pnpm-store/
+
+# Turborepo
+.turbo/
+
+# Builds
+dist/
+build/
+web-build/
+*.tsbuildinfo
+
+# Expo / React Native
+.expo/
+expo-env.d.ts
+apps/mobile/ios/
+apps/mobile/android/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# Variáveis de ambiente (segredos nunca vão para o Git)
+.env
+.env.*
+!.env.example
+
+# Supabase CLI (arquivos temporários)
+supabase/.branches/
+supabase/.temp/
+
+# Testes
+coverage/
+.maestro/screenshots/
+
+# Logs
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+pnpm-debug.log*
+*.log
+
+# Sistema e editores
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Configuração local do Claude Code (a do projeto é versionada)
+.claude/settings.local.json

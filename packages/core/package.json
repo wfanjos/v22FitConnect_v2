@@ -1,0 +1,18 @@
+{
+  "name": "@v22/core",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Regras compartilhadas: tipos, cálculos (volume, recordes, sequência), validações, conversão kg/lb",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3"
+  }
+}

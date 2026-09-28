@@ -1,0 +1,18 @@
+{
+  "name": "@v22/ui",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Tokens de design (cores, espaçamentos, tipografia)",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3"
+  }
+}
