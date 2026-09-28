@@ -35,7 +35,7 @@ flowchart LR
 ### Fase 0 — Fundação
 
 - Monorepo, Expo, Vite, TypeScript, lint, GitHub Actions.
-- Projeto Supabase existente na nuvem, migrations versionadas.
+- Projeto Supabase na nuvem (`bherdjbwfftejezagmlr`), migrations versionadas.
 - Tema claro/escuro com os tokens da marca, fontes, componentes base (botão, campo, cartão, lista, estado vazio com mascote).
 - i18n PT/EN/ES com detecção do idioma do aparelho.
 - Sentry e PostHog.
@@ -141,7 +141,8 @@ flowchart LR
 
 ## Antes de começar a fase 0
 
-- [x] Projeto Supabase na nuvem (já existe)
-- [ ] Conta Expo (EAS) gratuita
-- [ ] Contas Sentry e PostHog gratuitas
-- [ ] Credenciais de login Google (Google Cloud) e Apple (exige conta Apple Developer, que pode esperar até a fase 13; até lá, testar Apple só no simulador ou deixar para depois)
+- [x] Projeto Supabase na nuvem: "V22 Fit Connect", ref `bherdjbwfftejezagmlr`, região São Paulo (criado em 2026-09-28)
+- [x] Conta Expo (EAS) gratuita: usuário `Wfanjos`
+- [x] Contas Sentry e PostHog gratuitas: Sentry organização `dosanjos`; PostHog na região EU
+- [x] Login Google: cliente "Aplicativo da Web" no Google Cloud (projeto V22 Fit Connect) configurado no Supabase em 2026-09-28. Clientes Android e iOS ficam para a fase 1 (precisam do nome do pacote e do SHA-1 do primeiro build)
+- [ ] Login Apple: exige conta Apple Developer paga, pode esperar até a fase 13

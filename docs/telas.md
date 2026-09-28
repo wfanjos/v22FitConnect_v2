@@ -218,7 +218,7 @@ Mesmo site do admin, área do professor. Espelha o app, com mais espaço.
 | AD-12 | Fila de exercícios de usuários | Agrupados por similaridade, contagem; promover a oficial, mesclar, descartar |
 | AD-13 | Fila de textos de IA | Descrições e execuções geradas aguardando revisão |
 | AD-14 | Fila de traduções | Revisão PT/ES |
-| AD-20 | Usuários | Busca; suspender/banir, selo CREF verificado |
+| AD-20 | Usuários | Busca; dados básicos da conta (sem dados de saúde); suspender/banir, selo CREF verificado |
 | AD-21 | Diretório | Perfis públicos; ocultar |
 | AD-22 | Denúncias | Fila com contexto e ação tomada |
 | AD-23 | Suporte | Mensagens do "fale conosco" e reportes de problema |
@@ -242,4 +242,4 @@ Mesmo site do admin, área do professor. Espelha o app, com mais espaço.
 
 ## Pontos a confirmar
 
-- Admin sem tela de dados da conta: AD-20 hoje mostra apenas o necessário para suspender/banir e dar o selo. Confirmar se isso basta para o suporte.
+- Nenhum no momento.
