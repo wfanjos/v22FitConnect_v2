@@ -23,6 +23,16 @@ supabase/        Migrations, políticas RLS, funções, seeds e testes do banco
 landing/         Landing page estática
 ```
 
+## Ferramentas (decididas em 2026-09-28)
+
+- **Monorepo**: pnpm (workspaces) + Turborepo.
+- **Expo SDK**: a versão estável mais recente no momento de criar o app (registrar aqui o número).
+- **Navegação do app**: Expo Router.
+- **Estilo**: `StyleSheet` do React Native + tema próprio (`useTheme()` lendo os tokens de `packages/ui`); na web, os mesmos tokens como variáveis CSS. Sem NativeWind/Tamagui.
+- **Idiomas**: i18next + react-i18next, com `expo-localization` para detectar o idioma do aparelho.
+- **Lint e formatação**: ESLint (`eslint-config-expo`) + Prettier.
+- **Dados no app**: telas leem direto do SQLite local (fonte da verdade offline); Zustand só para estado de tela (ex.: cronômetro do treino). Na web, TanStack Query para buscar do Supabase.
+
 ## Fases
 
 ```mermaid
