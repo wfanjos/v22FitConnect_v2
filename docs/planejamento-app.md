@@ -15,6 +15,7 @@ Decisões tomadas até agora no planejamento.
 - Offline: SQLite puro (expo-sqlite), com sincronização própria (sem PowerSync/WatermelonDB).
 - Login: e-mail/senha, Google e Apple.
 - Idiomas: português, inglês e espanhol. Segue o idioma do aparelho (fora de PT/EN/ES, usa inglês), com troca manual.
+- Nomes das abas em inglês/espanhol (decidido em 2026-10-01): Início = Home/Inicio; Séries = Programs/Rutinas; Progresso = Progress/Progreso; Professores = Coaches/Entrenadores; Perfil = Profile/Perfil; Painel = Dashboard/Panel; Alunos = Students/Alumnos; Modelos = Templates/Plantillas. Textos em `packages/i18n`, português é a referência.
 - Lançamento nas lojas: Brasil primeiro; outros países depois (GDPR e outras leis só então).
 - Texto criado pelo usuário (séries, observações, exercícios próprios, bio) não é traduzido; exercício próprio só é traduzido se virar oficial.
 - Faixa de preço do diretório na moeda do país do professor, sem conversão.
@@ -161,6 +162,7 @@ Decisões tomadas até agora no planejamento.
 - Respeita o tamanho de fonte do sistema sem quebrar as telas.
 - Tela de treino com botões grandes, para usar sem precisão (mão suada, luva).
 - Versão mínima: padrão do Expo (≈ Android 7+ / iOS 15+).
+- Identificação do app (decidido em 2026-10-01): nome `V22 Fit Connect`, slug `v22-fit-connect`, scheme `v22fitconnect`. O ID do pacote Android/iOS ainda não foi definido (vem na fase 1, com o login Google). Ícone e splash vêm de `assets/brand/expo/` (splash sobre `#040C19`); sem ícone temático do Android 13+ por enquanto.
 
 ## Aparência e monitoramento
 
