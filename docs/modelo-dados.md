@@ -118,11 +118,15 @@ Exercício de professor fica visível ao aluno que tem série com ele (regra RLS
 ## Sincronização offline
 
 - **No aparelho (SQLite)**: perfil próprio, vínculos, séries atribuídas e próprias (com as versões), treinos, recordes, avaliações (sem as fotos), conquistas, notificações e o catálogo de exercícios no idioma do usuário.
+- **Dados de saúde do aluno** (anamnese, avaliações): ficam offline só no celular do próprio aluno. O professor lê direto do servidor, sem guardar no disco; revogou o compartilhamento ou desfez o vínculo, parou de ver na hora (decidido em 2026-10-01, por causa da LGPD).
+- **Quando sincronizar** (decidido em 2026-10-01): por eventos, sem relógio: ao abrir o app, ao voltar para ele, ao terminar um treino, ao puxar a tela para atualizar e quando a internet volta; mais um aviso por notificação push (grátis) quando o professor manda uma série nova. As alterações são agrupadas (várias viram uma chamada). Não há verificação periódica, para economizar o tráfego grátis do Supabase.
 - **Imagens dos exercícios**: as dos exercícios das séries do aluno baixam automaticamente; as demais, na primeira vez que são abertas, e ficam em cache.
 - **Só online**: diretório, perfis públicos, fotos de evolução, admin, suporte.
 - **Baixar**: o aparelho pede tudo com `seq_sinc` maior que o último recebido.
 - **Enviar**: fila local de alterações, enviada em lote quando há conexão; o servidor valida pelas regras de RLS.
 - **Conflitos**: o último a chegar ao servidor vence, por registro (decidido em 2026-10-01; vale a ordem de chegada, não o relógio do aparelho). Treinos em si nunca conflitam (só o aluno grava). Série do professor editada durante um treino offline segue a regra de versão.
+- **Envio campo a campo** (confirmado em 2026-10-01): o aparelho envia só as colunas que mudou e o servidor atualiza só elas. Duas edições em colunas diferentes do mesmo registro sobrevivem; na mesma coluna vale o último a chegar. O que o aparelho envia não conta no limite de tráfego grátis do Supabase (só conta o que o Supabase envia ao celular). Histórico que não pode mudar (ex.: versões de série) usa o modo `somente_insercao`; tabelas gravadas só pelo servidor (vínculos, convites) usam `somente_servidor`.
+- **Economia de tráfego**: o aparelho baixa todas as tabelas numa única chamada (`sinc_baixar_tudo`) e, sem novidade, a resposta tem poucos bytes. O servidor só entrega linhas com mais de 15 s (`sinc_janela_segura`), para o cursor nunca pular linhas de transações lentas; por isso uma alteração leva até 15 s para chegar aos outros aparelhos.
 - **Registros apagados**: a exclusão lógica (`excluido_em`) não é limpa na v1; qualquer aparelho, mesmo parado há meses, recebe as exclusões (decidido em 2026-10-01).
 - **Versão mínima**: o app compara sua versão com `config_app` antes de sincronizar.
 

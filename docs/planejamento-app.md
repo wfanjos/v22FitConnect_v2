@@ -177,6 +177,7 @@ Decisões tomadas até agora no planejamento.
 ## Requisitos legais
 
 - Exclusão de conta dentro do app.
+- Dados de saúde (anamnese, avaliações): o professor só os vê online, direto do servidor, sem cópia no disco do celular dele; ficam offline só no celular do próprio aluno (decidido em 2026-10-01).
 - Exclusão: conta desativada por 30 dias (pode reativar), depois tudo é apagado; históricos vistos pelo professor são anonimizados.
 - Exercícios do usuário que viraram oficiais ficam na base, sem autoria.
 - Exportar meus dados pelo app (perfil, treinos, avaliações, fotos + CSV dos treinos), atendendo a portabilidade da LGPD.
@@ -194,6 +195,7 @@ Decisões tomadas até agora no planejamento.
 ## Limites dos serviços gratuitos a monitorar
 
 - Supabase free: 500 MB de banco, 1 GB de arquivos, 50 mil usuários ativos/mês, pausa após 7 dias de inatividade.
+- Supabase free, tráfego de saída (egress): 5 GB/mês, mais 5 GB/mês de arquivos servidos do cache (CDN). A cota soma banco, login, arquivos e funções e vale para a organização inteira, então o projeto "Nossas Compras" divide a mesma cota com o V22. Só conta o que o Supabase envia ao celular (o que o celular envia ao servidor não conta). Ao passar, há aviso, um período de carência e depois restrição do projeto (fonte: documentação oficial do Supabase, consultada em 2026-10-01).
 - Expo/EAS free: 30 builds/mês (até 15 iOS), EAS Update para até 1.000 usuários ativos/mês.
 
 ## Em aberto
