@@ -6,6 +6,8 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 
 import { i18n } from '@/i18n';
+import { AnalyticsProvider } from '@/monitoring/analytics-provider';
+import { Sentry } from '@/monitoring/sentry';
 import { fontAssets } from '@/theme/fonts';
 import { ThemeProvider, useTheme } from '@/theme/theme-provider';
 
@@ -21,7 +23,7 @@ function Navigator() {
   );
 }
 
-export default function RootLayout() {
+function RootLayout() {
   const [fontsLoaded, fontError] = useFonts(fontAssets);
   const ready = fontsLoaded || fontError !== null;
 
@@ -32,10 +34,15 @@ export default function RootLayout() {
   if (!ready) return null;
 
   return (
-    <I18nextProvider i18n={i18n}>
-      <ThemeProvider>
-        <Navigator />
-      </ThemeProvider>
-    </I18nextProvider>
+    <AnalyticsProvider>
+      <I18nextProvider i18n={i18n}>
+        <ThemeProvider>
+          <Navigator />
+        </ThemeProvider>
+      </I18nextProvider>
+    </AnalyticsProvider>
   );
 }
+
+// Sentry captura os erros não tratados da árvore de telas.
+export default Sentry.wrap(RootLayout);

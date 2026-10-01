@@ -172,6 +172,7 @@ Decisões tomadas até agora no planejamento.
 - Fontes: Archivo (títulos e números) e Figtree (texto). No app, o Archivo usa a largura normal, porque o React Native não aplica a variante expandida do mockup; na web, usa a expandida (decidido em 2026-10-01).
 - Crashes/erros: Sentry (plano grátis) no app e no admin.
 - Analytics: PostHog (plano grátis), citado na política de privacidade.
+- Analytics sem identificar a pessoa (decidido em 2026-10-01): eventos sem e-mail, nome ou ID de conta; sem gravação de tela (session replay); sem tela de consentimento. A política de privacidade deve dizer isso. Se algum dia os eventos passarem a ser ligados à conta, reavaliar o consentimento.
 
 ## Requisitos legais
 
