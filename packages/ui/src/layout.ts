@@ -3,6 +3,8 @@ export const space = {
   xxs: 4,
   xs: 6,
   sm: 8,
+  sm2: 10, // espaço entre ícone e texto no campo
+  md2: 11, // respiro vertical dos itens de lista
   md: 12,
   lg: 14,
   xl: 18, // margem lateral das telas
@@ -31,6 +33,21 @@ export const size = {
   chip: 32,
   minTouch: 44,
   screenMargin: space.xl,
+  icon: 20,
+  mascotFallback: 96, // símbolo da harpia no estado vazio, até existirem as poses do mascote
+  focusRing: 3,
+} as const;
+
+export const border = {
+  hairline: 1,
+  regular: 1.5,
+  icon: 2, // espessura do traço dos ícones Lucide
+} as const;
+
+export const opacity = {
+  disabled: 0.5,
+  pressed: 0.7,
+  pressedCard: 0.8,
 } as const;
 
 export type Space = keyof typeof space;
