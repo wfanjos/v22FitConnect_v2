@@ -1,0 +1,29 @@
+{
+  "name": "@v22/supabase",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Migrations do Supabase e testes de banco (PGlite)",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "<rootDir>/tests/**/*.test.ts"
+    ],
+    "testTimeout": 60000
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "@babel/preset-typescript": "^7.29.7",
+    "@electric-sql/pglite": "^0.5.8",
+    "@types/jest": "29.5.14",
+    "@types/node": "^24.19.0",
+    "@v22/core": "workspace:*",
+    "babel-jest": "^29.7.0",
+    "jest": "~29.7.0",
+    "typescript": "~6.0.3"
+  }
+}
