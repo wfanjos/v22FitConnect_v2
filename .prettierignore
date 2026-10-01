@@ -1,0 +1,13 @@
+node_modules
+.turbo
+.expo
+dist
+build
+web-build
+pnpm-lock.yaml
+assets
+docs
+.claude
+CLAUDE.md
+AGENTS.md
+*.md
