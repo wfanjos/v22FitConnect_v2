@@ -30,6 +30,7 @@ landing/         Landing page estática
 - **Expo SDK**: 57 (estável mais recente em 2026-09-28; React Native 0.86, React 19.2).
 - **Navegação do app**: Expo Router.
 - **Estilo**: `StyleSheet` do React Native + tema próprio (`useTheme()` lendo os tokens de `packages/ui`); na web, os mesmos tokens como variáveis CSS. Sem NativeWind/Tamagui.
+- **Preferências do aparelho** (tema e idioma): guardadas no SQLite local via `expo-sqlite/kv-store`, em `apps/mobile/src/preferences.ts`.
 - **Idiomas**: i18next + react-i18next, com `expo-localization` para detectar o idioma do aparelho.
 - **Lint e formatação**: ESLint (`eslint-config-expo`) + Prettier.
 - **Dados no app**: telas leem direto do SQLite local (fonte da verdade offline); Zustand só para estado de tela (ex.: cronômetro do treino). Na web, TanStack Query para buscar do Supabase.

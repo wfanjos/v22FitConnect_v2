@@ -164,7 +164,8 @@ Decisões tomadas até agora no planejamento.
 
 ## Aparência e monitoramento
 
-- Tema claro e escuro: segue o sistema, com troca manual pelo usuário.
+- Tema claro e escuro: segue o sistema, com troca manual pelo usuário. A escolha de tema e a de idioma ficam guardadas no aparelho (SQLite local) e voltam ao reabrir o app (decidido em 2026-10-01).
+- Fontes: Archivo (títulos e números) e Figtree (texto). No app, o Archivo usa a largura normal, porque o React Native não aplica a variante expandida do mockup; na web, usa a expandida (decidido em 2026-10-01).
 - Crashes/erros: Sentry (plano grátis) no app e no admin.
 - Analytics: PostHog (plano grátis), citado na política de privacidade.
 

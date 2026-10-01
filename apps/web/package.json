@@ -11,6 +11,8 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource/figtree": "^5.3.0",
     "@v22/core": "workspace:*",
     "@v22/i18n": "workspace:*",
     "@v22/ui": "workspace:*",
