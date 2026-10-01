@@ -22,7 +22,7 @@ Antes do primeiro teste, confira o que já está configurado (`package.json`, co
 
 ### 1. Motor de sincronização (fase 0 — o maior risco)
 
-Fila de envio em lote, download por `sync_seq` maior que o último recebido, exclusão lógica chegando a outros aparelhos, conflito "último a gravar vence, por registro", ids uuid v7 criados offline sem colisão, comparação com a versão mínima em `app_config` antes de sincronizar, retomada após falha de rede no meio do envio. Cada caso com caminho feliz e caminho de falha.
+Fila de envio em lote, download por `seq_sinc` maior que o último recebido, exclusão lógica chegando a outros aparelhos, conflito "último a chegar ao servidor vence, por registro", ids uuid v7 criados offline sem colisão, comparação com a versão mínima em `config_app` antes de sincronizar, retomada após falha de rede no meio do envio. Cada caso com caminho feliz e caminho de falha.
 
 ### 2. Regras de negócio com lógica exata
 
@@ -38,7 +38,7 @@ Leia a regra no doc antes de testar — a lista acima é orientação, o doc é 
 
 ### 3. Isolamento de dados (RLS)
 
-Tão de segurança quanto de LGPD: um usuário não lê nem grava dado de outro; professor só vê o que criou/atribuiu; dados de saúde só com `share_health = true` no vínculo ativo; ex-professor sem acesso de escrita; exclusão de conta segue o fluxo decidido (30 dias desativada, depois apagada, históricos anonimizados).
+Tão de segurança quanto de LGPD: um usuário não lê nem grava dado de outro; professor só vê o que criou/atribuiu; dados de saúde só com `compartilha_saude = true` no vínculo ativo; ex-professor sem acesso de escrita; exclusão de conta segue o fluxo decidido (30 dias desativada, depois apagada, históricos anonimizados).
 
 ### 4. Comportamento de tela
 

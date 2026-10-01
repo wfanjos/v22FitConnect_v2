@@ -8,10 +8,10 @@ App de treinos de musculação que conecta aluno e professor: o aluno cria a pr�
 - **Fontes da verdade** (ler antes de decidir qualquer coisa; não duplicar o conteúdo delas aqui):
   - `docs/planejamento-app.md` — regras de negócio, stack, legal, limites dos serviços grátis. A seção "Em aberto" lista o que ainda não foi decidido: não preencha sozinho.
   - `docs/telas.md` — ~130 telas com códigos (`E` entrada · `AL` aluno · `TR` treino · `PR` professor · `C` compartilhadas · `W` web do professor · `AD` admin · `LP` landing). Cite o código da tela no código/commit quando fizer sentido. "Pontos a confirmar" no fim do arquivo são pendências.
-  - `docs/modelo-dados.md` — ~45 tabelas, convenções (uuid v7, `sync_seq`, exclusão lógica, kg no banco), RLS e sincronização offline.
+  - `docs/modelo-dados.md` — ~45 tabelas, convenções (uuid v7, `seq_sinc`, exclusão lógica, kg no banco, nomes de tabelas e colunas em português), RLS e sincronização offline.
   - `docs/fases.md` — fases 0–13 com marcos, estrutura do repositório e checklist "Antes de começar a fase 0".
 - **Ordem de desenvolvimento**: seguir `docs/fases.md`. Primeiro o aluno sozinho (offline e cronômetros), depois o professor por cima. Uma fase só fecha com os testes dela passando.
-- **Sempre avaliar a LGPD** ao mexer em dados pessoais ou de saúde. Anamnese, avaliações e fotos de evolução são dados sensíveis: só o próprio aluno e professores com `share_health = true` no vínculo ativo podem ler.
+- **Sempre avaliar a LGPD** ao mexer em dados pessoais ou de saúde. Anamnese, avaliações e fotos de evolução são dados sensíveis: só o próprio aluno e professores com `compartilha_saude = true` no vínculo ativo podem ler.
 - **Perguntas ao usuário**: em rodadas, com opções concretas (descrever o conteúdo real, não rótulos genéricos). Ao explicar ferramentas ou conceitos, usar linguagem simples: o que é, para que serve, custo e recomendação.
 - **Registrar decisões**: toda resposta do usuário que decide algo entra logo em seguida no doc correspondente em `docs/`.
 - **Custo zero**: todas as ferramentas precisam ser gratuitas. Antes de sugerir algo pago, apontar o custo e uma alternativa grátis.
@@ -31,7 +31,7 @@ App de treinos de musculação que conecta aluno e professor: o aluno cria a pr�
 - **Login**: e-mail/senha, Google e Apple.
 - **Idiomas**: PT/EN/ES, segue o aparelho (fora desses, inglês), com troca manual. Nenhum texto visível direto no código.
 - **Monitoramento**: Sentry (erros) e PostHog (uso), ambos no plano grátis.
-- **Testes**: Jest + Testing Library (unidade/componentes), testes SQL de RLS (rodam no GitHub Actions num banco temporário, sem tocar na nuvem), Maestro (ponta a ponta).
+- **Testes**: Jest + Testing Library (unidade/componentes), testes SQL de RLS com PGlite (Postgres em memória dentro do Jest; roda no PC e no GitHub Actions, sem Docker e sem tocar na nuvem), Maestro (ponta a ponta).
 
 ## Supabase
 

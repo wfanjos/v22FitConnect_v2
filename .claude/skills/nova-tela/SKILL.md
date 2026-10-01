@@ -57,7 +57,7 @@ Se a tela não se encaixa em nenhum padrão existente, avise antes de criar um n
 
 ## 7. Checagem de LGPD e acesso
 
-Se a tela lê ou grava dado pessoal ou de saúde (anamnese, avaliações, fotos), confira que a regra de acesso bate com `docs/modelo-dados.md` (dados de saúde só para o próprio aluno e professor com `share_health = true` no vínculo ativo). Qualquer dado novo não previsto deve ser sinalizado ao usuário, não implementado em silêncio.
+Se a tela lê ou grava dado pessoal ou de saúde (anamnese, avaliações, fotos), confira que a regra de acesso bate com `docs/modelo-dados.md` (dados de saúde só para o próprio aluno e professor com `compartilha_saude = true` no vínculo ativo). Qualquer dado novo não previsto deve ser sinalizado ao usuário, não implementado em silêncio.
 
 ## 8. Critérios de pronto e fechamento
 

@@ -6,7 +6,7 @@ Ordem de construção da v1. Cada fase termina com um marco testável. Telas pel
 
 - **Ordem**: primeiro o aluno usando sozinho (inclui offline e cronômetros), depois o professor por cima.
 - **Git**: commits direto na `main`. GitHub Actions roda lint, checagem de tipos e testes a cada push.
-- **Testes**: cobertura ampla. Unidade e componentes (Jest + Testing Library), regras de acesso do banco (testes SQL de RLS), ponta a ponta (Maestro) nos fluxos de cada fase. Uma fase só fecha com os testes dela passando.
+- **Testes**: cobertura ampla. Unidade e componentes (Jest + Testing Library), regras de acesso do banco (testes SQL de RLS com PGlite, decidido em 2026-10-01), ponta a ponta (Maestro) nos fluxos de cada fase. Uma fase só fecha com os testes dela passando.
 - **Supabase**: um único projeto na nuvem, usado desde o desenvolvimento e que vira a produção definitiva, testado em 2 ou mais celulares reais. Migrations sempre versionadas no repositório. Os testes automatizados de banco (RLS) rodam no GitHub Actions, num banco temporário, sem tocar na nuvem. Antes do beta, os dados de teste da nuvem são limpos.
 - **Beta**: só com tudo pronto (fase 13). Antes disso, os testes são seus, no seu celular.
 - **Pronto quando**: telas da fase feitas em PT/EN/ES, tema claro e escuro, tablet, fonte do sistema e testes passando.
@@ -51,7 +51,7 @@ flowchart LR
 - Tema claro/escuro com os tokens da marca, fontes, componentes base (botão, campo, cartão, lista, estado vazio com mascote).
 - i18n PT/EN/ES com detecção do idioma do aparelho.
 - Sentry e PostHog.
-- Motor de sincronização SQLite ↔ Supabase (fila de envio, `sync_seq`, exclusão lógica, conflitos), com testes pesados, antes de qualquer tela depender dele.
+- Motor de sincronização SQLite ↔ Supabase (fila de envio, `seq_sinc`, exclusão lógica, conflitos), com testes pesados, antes de qualquer tela depender dele. As primeiras migrations criam só a infraestrutura de sincronização (numeração `seq_sinc`, carimbos automáticos, função de envio em lote); as tabelas de negócio nascem na fase da tela que as usa, e os testes usam tabelas de teste que existem só no banco temporário (decidido em 2026-10-01).
 - **Marco**: app abre no celular com splash e ícone da marca, troca de tema e idioma; sincronização testada isoladamente.
 
 ### Fase 1 — Conta e entrada
@@ -74,7 +74,7 @@ flowchart LR
 ### Fase 3 — Séries do aluno
 
 - Editor de série (C-10 a C-13): sequência com nomes livres ou por dia da semana, blocos, todos os tipos de prescrição, aquecimento, drop-set, rest-pause, cadência, descanso, tipo de carga.
-- AL-10 a AL-13, AL-02; versões de série (`plan_versions`).
+- AL-10 a AL-13, AL-02; versões de série (`versoes_plano`).
 - kg/lb.
 - **Marco**: montar sua própria série completa offline e vê-la no outro aparelho depois de sincronizar.
 

@@ -24,7 +24,7 @@ Toda regra, texto de tela, limite numérico, condição de borda ou permissão i
 ### 2. Segurança, RLS e LGPD
 
 - Toda tabela nova tem RLS ativado e políticas que batem com `docs/modelo-dados.md`.
-- Dados de saúde (anamnese, avaliações, fotos de evolução) só legíveis pelo próprio aluno e por professor com `share_health = true` no vínculo **ativo**.
+- Dados de saúde (anamnese, avaliações, fotos de evolução) só legíveis pelo próprio aluno e por professor com `compartilha_saude = true` no vínculo **ativo**.
 - Professor só vê as séries e registros que ele criou/atribuiu; após desvincular, só leitura do que já existia.
 - Operações sensíveis (aceitar convite, desvincular, excluir conta) rodam em funções no servidor, não em escrita direta do app.
 - Nenhuma chave secreta (service role) no app ou no site.
@@ -32,7 +32,7 @@ Toda regra, texto de tela, limite numérico, condição de borda ou permissão i
 
 ### 3. Sincronização offline
 
-Para código que toca o banco local ou o motor de sincronização: tabelas sincronizadas têm `created_at`, `updated_at`, `deleted_at` e `sync_seq`; ids são uuid v7 gerados no aparelho; exclusão é lógica; carga gravada em kg (lb só na exibição); conflitos seguem "último a gravar vence, por registro"; treino executado aponta para a `plan_version` usada, e edição do professor nunca altera histórico.
+Para código que toca o banco local ou o motor de sincronização: tabelas sincronizadas têm `criado_em`, `atualizado_em`, `excluido_em` e `seq_sinc`; ids são uuid v7 gerados no aparelho; exclusão é lógica; carga gravada em kg (lb só na exibição); conflitos seguem "último a chegar ao servidor vence, por registro"; treino executado aponta para a `versao_plano` usada, e edição do professor nunca altera histórico.
 
 ### 4. Fidelidade ao mockup e tokens
 
