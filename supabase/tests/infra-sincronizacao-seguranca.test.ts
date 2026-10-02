@@ -112,6 +112,55 @@ describe('janela de segurança do download (transações lentas)', () => {
   });
 });
 
+describe('função interna fora da API', () => {
+  let banco: Banco;
+  beforeAll(async () => {
+    banco = await criarBanco();
+  });
+  afterAll(async () => {
+    await banco.fechar();
+  });
+
+  it('sinc_registrar_operacao não existe mais no schema public (que a API expõe)', async () => {
+    const [{ publica, interna }] = await banco.admin.query(
+      `select to_regprocedure('public.sinc_registrar_operacao(uuid)') as publica,
+              to_regprocedure('interno.sinc_registrar_operacao(uuid)') as interna`,
+    );
+    expect(publica).toBeNull();
+    expect(interna).not.toBeNull();
+  });
+
+  it('o schema interno só aceita usuários autenticados, e a função segue sendo do servidor (definer)', async () => {
+    const [linha] = await banco.admin.query(
+      `select has_schema_privilege('authenticated', 'interno', 'usage') as auth_usa,
+              has_schema_privilege('anon', 'interno', 'usage') as anon_usa,
+              prosecdef
+         from pg_proc where oid = 'interno.sinc_registrar_operacao(uuid)'::regprocedure`,
+    );
+    expect(linha).toMatchObject({ auth_usa: true, anon_usa: false, prosecdef: true });
+  });
+
+  it('sinc_enviar continua registrando as operações pelo schema interno', async () => {
+    const r = await banco
+      .como(ANA)
+      .rpc('sinc_enviar', JSON.stringify([operacao(1, 'teste_itens', item(1), uuid(9100))]));
+    expect(r[0].ok).toBe(true);
+    const [{ n }] = await banco.admin.query(`select count(*)::int as n from public.sinc_operacoes`);
+    expect(n).toBe(1);
+  });
+
+  it('sinc_janela_segura tem search_path fixo (alerta do Supabase)', async () => {
+    // O auxiliar de teste recria a função só para fixar a janela; a migration de ajuste fixa o caminho.
+    const { migrations } = await import('./helpers/banco');
+    const sql = migrations()
+      .map((m) => m.sql)
+      .join(String.fromCharCode(10));
+    expect(sql).toMatch(
+      /alter function public\.sinc_janela_segura\(\) set search_path = public, pg_temp/,
+    );
+  });
+});
+
 describe('segurança da infraestrutura', () => {
   let banco: Banco;
 
@@ -414,7 +463,7 @@ describe('segurança da infraestrutura', () => {
       for (const chamada of [
         `select public.sinc_enviar('[]'::jsonb)`,
         `select public.sinc_baixar('teste_itens', 0, 10)`,
-        `select public.sinc_registrar_operacao('${uuid(1)}')`,
+        `select interno.sinc_registrar_operacao('${uuid(1)}')`,
         `select public.sinc_janela_segura()`,
       ]) {
         expect(await banco.anonimo.erro(chamada)).toMatch(/permission denied/);

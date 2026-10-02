@@ -711,12 +711,16 @@ describe('tabelas internas', () => {
       ]);
     expect(erro).toMatch(/permission denied/);
     // A função sempre registra em nome de quem chama.
-    expect(await banco.como(ANA).rpc('sinc_registrar_operacao', uuid(2))).toBe(true);
-    expect(await banco.como(ANA).rpc('sinc_registrar_operacao', uuid(2))).toBe(false);
+    const registrar = async () =>
+      (
+        await banco.como(ANA).query(`select interno.sinc_registrar_operacao($1) as r`, [uuid(2)])
+      )[0]!.r;
+    expect(await registrar()).toBe(true);
+    expect(await registrar()).toBe(false);
     const donos = await banco.admin.query(`select usuario_id from public.sinc_operacoes`);
     expect(donos).toEqual([{ usuario_id: ANA }]);
     expect(
-      await banco.anonimo.erro(`select public.sinc_registrar_operacao($1)`, [uuid(3)]),
+      await banco.anonimo.erro(`select interno.sinc_registrar_operacao($1)`, [uuid(3)]),
     ).toMatch(/permission denied/);
   });
 
